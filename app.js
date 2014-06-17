@@ -8,7 +8,7 @@ var passport = require('passport'); // decompose
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-    res.send('Hello World!');
+    res.send('Hello Chistine :) This is the homepage of your website. It\'s a little shabby now, but it\'ll shape up soon enough!');
 });
 
 app.get('/test', function(req, res) {
