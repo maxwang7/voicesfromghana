@@ -2,6 +2,8 @@
 var express = require("express");
 var logfmt = require("logfmt");
 var app = express();
+var mongoose = require('mongoose'); // decompose
+var passport = require('passport'); // decompose
 
 app.use(logfmt.requestLogger());
 
