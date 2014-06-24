@@ -26,6 +26,7 @@
 			</div>
 		</div>
 	</div>
+	<script src='interact.js'></script>
 	<script>
 		function Person(image_id, bio_id) {
 			if(typeof(image_id) !== "string") console.log('Error, id not string');
@@ -55,6 +56,10 @@
 			};
 
 			image.hover(hide, show);
+
+			image.mouseover(function() {
+				console.log("mouse over");
+			})
 		}
 
 		var max = new Person('image', 'bio');
