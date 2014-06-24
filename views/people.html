@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Voices from Ghana: People</title>
+  <meta name="description" content="Voices from Ghana">
+  <meta name="author" content="Christine Chen">
+
+  <link rel="stylesheet" href="people.css">
+
+  <script src="jquery-1.10.2.js"></script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+	<div class='people-container'>
+		<div id='persona' class='person'>
+			<img id='image' src='photo_placeholder.jpeg'/>
+			<div id='bio'>
+				MAXIMILLIAN WANG
+				MORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXTMORE TEXT
+			</div>
+		</div>
+	</div>
+	<script>
+		function Person(image_id, bio_id) {
+			if(typeof(image_id) !== "string") console.log('Error, id not string');
+			if(typeof(bio_id) !== "string") console.log('Error, id not string');
+			var image = $('#' + image_id);
+			var bio = $('#' + bio_id);
+
+			var obj = this;
+			var hidden = false;
+
+			var hide = function() {
+				console.log("hide");
+				bio.animate({
+					'marginTop' : '-=300px',
+					'height' : '+=300px'
+				}, 800);
+				hidden = true;
+			};
+
+			var show = function() {
+				console.log("show");
+				bio.animate({
+					'marginTop' : '+=300px',
+					'height' : '-=300px'
+				}, 800);
+				hidden = false;
+			};
+
+			image.hover(hide, show);
+		}
+
+		var max = new Person('image', 'bio');
+	</script>
+</body>
+</html>
+
+<!--
+Different approaches to take:
+
+- Make custom animate that increases height of bio while moving it up.
+	- Change bio into the background image of a div?
+
+- Handroll javascript that'll do the things described in the previous example
+
+- Try what Christine suggested with overflowing the div element but not showing it
+	-->
