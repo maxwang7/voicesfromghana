@@ -17,5 +17,27 @@
 </head>
 
 <body>
+	<div class='site-container'>
+		<div id='1-container' class='image-container'>
+			<img id='1-img' src='photo_placeholder.jpeg' alt='No photo found.' \>
+		</div>
+		<div id='2-container' class='image-container'>
+			<img id='2-img' src='http://static4.businessinsider.com/image/51def664ecad04384c00000a/elon-musk-the-hyperloop-design-is-coming-august-12.jpg' alt='No photo found.' \>
+		</div>
+	</div>
+	<script src='cropper.js'></script>
+	<script>
+		var size = {
+			height: 400,
+			width: 300
+		};
+		var crop = new Cropper(size);
+		crop.crop($('#1-img'), $('#1-container'));
+		crop.crop($('#2-img'), $('#2-container'));
+
+		var urls = [
+			'http://static4.businessinsider.com/image/51def664ecad04384c00000a/elon-musk-the-hyperloop-design-is-coming-august-12.jpg'
+		];
+	</script>
 </body>
 </html>

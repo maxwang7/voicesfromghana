@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.site-container {
+	margin: 0;
+	padding: 0;
+}
+
+.image-container {
+	margin: 0;
+	padding: 0;
+
+	height: 400px;
+	width: 300px;
+
+	border: 1px solid black;
+
+	display: inline-block;
+	overflow: hidden;
+}

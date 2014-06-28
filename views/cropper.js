@@ -4,41 +4,51 @@ function assert(condition, message) {
 	}
 }
 
-function Cropper(size, ratio) {
+/* Function: Cropper
+ * -----------------
+ * Description: A Cropper object takes a size object, which
+ * has two fields: height and width. These represent the
+ * size and height of the box into which the image should
+ * be cropped.
+ */
+function Cropper(size) {
 	assert(typeof(size) === 'object', "size not object");
 	assert(size.height !== undefined, 'size.height is undefined');
 	assert(size.width !== undefined, 'size.width is undefined');
-	assert(typeof(ratio) === 'object', "ratio not object");
-	assert(ratio.height !== undefined, "ratio.height is undefined");
-	assert(ratio.width !== undefined, "ratio.width is undefined");
 
 	this.size = size;
-	this.ratio = ratio;
 }
 
+/* Given an image jQuery object, crops it to the size for
+ * which this Cropper has been designated.
+ */
 Cropper.prototype.crop = function(img) {
 	assert(typeof(img) == 'object', 'Image not Object');
+	img = $(img);
 
-	// say you have an image called Dog
-	// First see whether Dog's height or width is smaller,
-	// ratio-wise
-	var scaled_height = img.clientHeight * ratio.height;
-	var scaled_width = img.clientWidth * ratio.width;
-	var height_is_smaller = false;
-	if(scaled_height < scaled_width) {
-		height_is_smaller = true;
-	}
+	// Indicates whether the initial ratio of width:height is
+	// greater than the "final" ratio of width:height as stored
+	// inside this.size. This boolean is used as an indicator
+	// for whether the image should be scaled by comparing widths
+	// (true) or scaled by comparing heights (false).
+	var scale_width = this.size.width / this.size.height > img.width() / img.height();
 
 	// Next, scale down the image so that the smaller side,
 	// as determined previously, is the same size as the
 	// image box size
-	var scale = img.height() / size.height;
-	if(height_is_smaller) {
-
-		img.height = img.height()
+	if(!scale_width) {
+		//scale = img.height() / this.size.height;
+		img.height(this.size.height);
+		//img.width(img.width() / scale);
+	} else {
+		//scale = img.width() / this.size.width;
+		//img.height(img.height / scale);
+		img.width(this.size.width);
 	}
 
 	// Cut off the leftover part of the image from the 
 	// larger size, as determined previously, so that the
 	// image fits perfectly into the rectangle
+	// How to do this?
+
 }
