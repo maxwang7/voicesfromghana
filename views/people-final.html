@@ -42,15 +42,20 @@
 				</a>
 			</ul>
 		</div>
+		<!--
 		<div class='people-top-container'>
-			<!-- <p class='people-header'>VOICES FROM GHANA</p> -->
 			<p class='people-description'>
 				Meet the incredible <span id='word-people'>people</span> who have<br>
 				lent their <span class='orange'>stories</span>, <span class='orange'>insights</span>, and <span class='orange'>experiences</span> to<br>
 				the creation of my audio documentary.
 			</p>
 		</div>
+	-->
 		<div class='people-photos'>
+			<div class='person-container-outer'>
+				<div class='person-container-inner'>
+				</div>
+			</div>
 			<div class='person-container-outer'>
 				<div class='person-container-inner'>
 					<img class='person-photo' src='images/HelenaO.jpg'/>
@@ -121,7 +126,7 @@
 			var cropper = new Cropper(size);
 
 			for(var m = 0; m < images.length; m++) {
-				var person1 = new PersonBox(containers[m], images[m], blurbs[m]);
+				var person1 = new PersonBox(containers[m+1], images[m], blurbs[m]);
 				cropper.crop(images[m], containers[m])
 			}
 		})();
