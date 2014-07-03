@@ -8,6 +8,13 @@
 	font-size: 1.25em;
 }
 
+.voices-background {
+	padding: 5em 3em 0 3em;
+	//background-image: url('../images/KimT.png');
+	//background: linear-gradient;
+	border: 1px solid black;
+}
+
 .nav {
 	background-color: white;
 	/* position: fixed; */
@@ -32,7 +39,9 @@
 }
 
 #nav-selected {
-	color: #e77d2b;
+	color: #FFBD36;
+	text-decoration: none;
+	border-bottom: 1px solid #FFBD36;
 }
 
 .nav div div a:link {
@@ -47,7 +56,7 @@
 
 .nav div div a:hover {
 	color: black;
-    text-decoration: none;
+	border-bottom: 1px solid black;
 }
 
 .nav div div a:active {
@@ -63,32 +72,35 @@
 	padding: 1em;
 }
 
-.archive-title {
-	text-decoration: line-through;
+.voices-archive-title {
+	height: 1em;
+	border-bottom: 2px solid black;
 }
 
 .archive-title-words {
 	text-align: center;
 	text-decoration: none;
+	font-size: 1.5em;
+	margin-left: -0.5em;
 	margin-bottom: 1em;
 }
 .voices-recent-h1 {
-	color: #e77d2b;
+	color: #FFBD36;
 	font-size: 1.25em;
 	margin: 0.5em 0 0.5em 0;
 }
 
 #voices-recent-link {
-	color: #e77d2b;
+	color: #FFBD36;
 }
 
 .voices-recent-black-background {
-	background-color: black;
+	background-color: #333333;
 	color: white;
 }
 
 .voices-blurb-date {
-	background-color: #e77d2b;
+	background-color: #FFBD36;
 	color: white;
 	text-align: center;
 	padding: 0.5em 0 0.5em 0;
@@ -124,5 +136,11 @@
 }
 
 .voices-blurb-readmore {
-	color: #e77d2b;
+	color: #FFBD36;
+}
+
+.voices-toc-title {
+	text-align: center;
+	font-size: 1.25em;
+	padding: 1em 2em 1em 2em;
 }

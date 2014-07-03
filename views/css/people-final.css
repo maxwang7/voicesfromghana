@@ -107,10 +107,11 @@ body {
 
 /* people-photos section */
 .people-photos {
+	margin-top: 2em;
 	margin-left: auto;
 	padding: 0;
 
-	background-color: #e5e5e5;
+	/* background-color: #e5e5e5; */
 	position: absolute;
 	z-index: -1;
 }
@@ -129,9 +130,10 @@ body {
 	margin: 0;
 	padding: 0;
 
-	width: 18em;
+	width: 17em;
 	height: 24em;
 	display: absolute;
+	border: 5px solid #e5e5e5;
 
 	overflow: hidden;
 }
