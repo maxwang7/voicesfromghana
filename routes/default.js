@@ -7,6 +7,10 @@ exports.home = function(req, res) {
 	res.send('Hello Christine :)');
 };
 
+exports.partials = function(req, res) {
+	res.render('partials/' + req.params.name);
+}
+
 exports.index = function(req, res) {
 	res.send('404');
 };
