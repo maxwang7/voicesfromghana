@@ -1,0 +1,9 @@
+.row.voices-recent(ng-model='recent')
+	.col-xs-6.col-sm-6.col-md-8
+		img.img-responsive(src='{{recent.photo.url}}' alt='No image found')
+	.col-xs-6.col-sm-6.col-md-4.voices-recent-black-background.voices-recent-blurb
+		.voices-recent-h1 {{recent.timestamp}}
+		.voices-recent-h1 {{recent.title}}
+		div recent.text
+		.voices-recent-h1
+			a#voices-recent-link(href='') READ FULL POST >

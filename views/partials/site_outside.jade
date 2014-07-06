@@ -1,0 +1,17 @@
+.row
+	.hidden-xs.hidden-sm.col-md-3
+		img(src='')
+	.col-xs-12.col-sm-12.col-md-9
+		pages = [
+			'home',
+			'about',
+			'people',
+			'photos',
+			'thanks'
+		]
+		for(var pg in pages)
+			.col-xs-2.col-sm-2.col-md-2
+				if current_page === pg
+					a(id='nav-selected' href='/' + pg)
+				else
+					a(href='/' + pg)

@@ -6,7 +6,8 @@ voicesApp.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 			when('/home', {
-				templateUrl: 'partial/home.html'
+				templateUrl: 'partials/home.jade',
+				controller: 'HomeCtrl'
 			}).
 			otherwise({
 				redirectTo: '/'
