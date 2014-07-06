@@ -7,6 +7,7 @@ module.exports = function(app) {
 	var defaultHandlers = require('./default.js');
 	var errorHandlers = require('./error.js');
 	var postHandlers = require('./post.js');
+	var pageHandlers = require('./pages.js');
 
 	// Default
 	app.get('/', defaultHandlers.home);
