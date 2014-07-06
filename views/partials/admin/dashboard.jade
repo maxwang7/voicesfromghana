@@ -1,0 +1,16 @@
+extends ../../template
+
+.row
+	.col-xs-4
+	.col-xs-4
+		table
+			thead
+				tr
+					th Blog title
+					th Time created
+			tbody
+				each post in posts
+					tr
+						td post.info.title
+						td post.timestamp
+	.col-xs-4
