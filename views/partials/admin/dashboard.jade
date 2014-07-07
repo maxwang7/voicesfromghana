@@ -1,16 +1,31 @@
 extends ../../template
 
-.row
-	.col-xs-4
-	.col-xs-4
-		table
-			thead
-				tr
-					th Blog title
-					th Time created
-			tbody
-				each post in posts
-					tr
-						td post.info.title
-						td post.timestamp
-	.col-xs-4
+block content
+	.row
+		.col-xs-2
+		.col-xs-8
+			.row
+				h1 Hello Christine :) This is the Voices of Ghana dashboard. Have a great trip!
+			.row
+				a(href='/admin/blog/create') + New post
+			.row
+				table.table
+					thead
+						tr
+							th Title
+							th Description
+							th Tags
+							th Location
+							th Time created
+							th Actions
+					tbody
+						each post in posts
+							tr
+								td
+									a(href='/admin/blog/get/' + post._id)= post.info.title
+								td= post.info.description
+								td= post.info.tags
+								td= post.info.location
+								td= post.timestamp
+								td
+		.col-xs-2

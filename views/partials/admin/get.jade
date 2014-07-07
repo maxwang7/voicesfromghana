@@ -1,0 +1,19 @@
+extends ../../template
+
+block content
+	.row
+		.col-xs-2
+		.col-xs-8
+			.row
+				h1 Edit Post
+			.row
+				form.form-horizontal(action='/admin/blog/update/'+post._id method='post')
+					.form-group
+						label.col-xs-2.control-label Title
+						.col-xs-6
+							input.form-control(type='text' name='title' value=''+post.info.title)
+					.form-group
+						.col-xs-11
+						div
+							button.btn.btn-primary(type='submit') Submit
+		.col-xs-2
