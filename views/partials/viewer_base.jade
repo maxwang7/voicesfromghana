@@ -1,5 +1,6 @@
-extends ../template.jade
+extends ../template
 
-.container-flexible.voices-site.voices-background
-	include site_outside
-	block content
+block content
+	.container-flexible.voices-site.voices-background
+		include site_outside
+		block site_inside

@@ -1,11 +1,10 @@
 .row
 	.hidden-xs.hidden-sm.col-md-3
-		img(src='')
+		img(src='images/Border_Black_flag.png' height='250px')
 	.col-xs-12.col-sm-12.col-md-9
-		- pages = ['home','about','people','photos','thanks']
-		each pg in pages
+		each pg in ['blog','about','people','photos','thanks']
 			.col-xs-2.col-sm-2.col-md-2
 				if current_page === pg
-					a(id='nav-selected' href='/' + pg)
+					a(id='nav-selected' href='/' + pg)= pg
 				else
-					a(href='/' + pg)
+					a(href='/' + pg)= pg
