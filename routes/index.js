@@ -6,27 +6,29 @@
 module.exports = function(app) {
 	var defaultHandlers = require('./default.js');
 	var errorHandlers = require('./error.js');
-	var postHandlers = require('./post.js');
 	var pageHandlers = require('./pages.js');
+	var adminHandlers = require('./admin.js');
 
 	// Default
-	app.get('/', pageHandlers.blog);
+	//app.get('/', pageHandlers.blog);
 
 	// For audience
 	app.get('/blog', pageHandlers.blog);
 
-	app.get('/about', pageHandlers.about);
+	//app.get('/about', pageHandlers.about);
 
 	// For Christine
-	app.get('/admin/blog', adminHandlers.blog);
+	app.get('/admin/dashboard', adminHandlers.dashboard);
 
-	app.post('/admin/blog/create', adminHandlers.blogCreate);
+	app.get('/admin/blog/create', adminHandlers.blogCreateGET);
+
+	app.post('/admin/blog/create', adminHandlers.blogCreatePOST);
 
 	app.get('/admin/blog/get/:id', adminHandlers.blogGet);
 
-	app.post('/admin/blog/edit/:id', adminHandlers.blogEdit);
+	app.post('/admin/blog/update/:id', adminHandlers.blogUpdate);
 
-	app.post('/admin/blog/delete/:id', adminHandlers.blogEdit);
+	//app.post('/admin/blog/delete/:id', adminHandlers.blogEdit);
 
 	// If url not found
 	app.get('*', defaultHandlers.index);

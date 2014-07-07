@@ -1,0 +1,10 @@
+include bootstrap-form-field
+
+mixin post_form(post_url, placeholders)
+	form.form-horizontal(action!=post_url method='post')
+		+form_field('Title', 'col-xs-6', 'text', post.info.title, placeholders.title, '')
+		+form_field('Description', 'col-xs-10', 'text', post.info.description, placeholders.description, '')
+		+form_field('Story', 'col-xs-10', 'textarea', post.info.text, placeholders.story, 15)
+		+form_field('Tags', 'col-xs-10', 'text', post.info.tags, placeholders.tags, '')
+		+form_field('Location', 'col-xs-10', 'text', post.info.location, placeholders.location, '')
+		+form_field('', '', 'submit', '', '', '')

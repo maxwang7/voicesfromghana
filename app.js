@@ -6,7 +6,8 @@ var favicon = require('static-favicon'),
 	logger = require('morgan'),
 	cookieParser = require('cookie-parser'),
 	bodyParser = require('body-parser');
-var logfmt = require("logfmt");
+var logfmt = require("logfmt"),
+	path = require('path');
 //var passport = require('passport'); // decompose
 
 // middleware
