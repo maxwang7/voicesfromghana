@@ -28,4 +28,6 @@ block content
 								td= post.info.location
 								td= post.timestamp
 								td
+									form(action='/admin/blog/delete/' + post._id method='post')
+										button.btn.btn-primary(type='submit') Delete
 		.col-xs-2

@@ -30,9 +30,10 @@ module.exports = function(app) {
 
 	app.post('/admin/blog/update/:id', adminHandlers.blogUpdate);
 
-	//app.post('/admin/blog/delete/:id', adminHandlers.blogEdit);
+	app.post('/admin/blog/delete/:id', adminHandlers.blogDelete);
 
 	// robot.txt
+	app.get('/robots.txt', defaultHandlers.robots);
 
 	// If url not found
 	app.get('*', defaultHandlers.index);
