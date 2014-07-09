@@ -4,11 +4,10 @@
  */
 
 module.exports = function(mongoose) {
-	var DB_SERVER_DEVELOPMENT = 'voices'; // server name
-	var DB_SERVER_PRODUCTION = 'mongodb://:<pass>@candidate.15.mongolayer.com:10001,candidate.16.mongolayer.com:10001/app003132345';
 	var DB_SERVER = process.env.MONGOLAB_URI ||
   		process.env.MONGOHQ_URL ||
   		'mongodb://localhost/voices';
+  	console.log(DB_SERVER);
 	var Post = require('../models/post.js');
 
 	var db = mongoose.connection;
