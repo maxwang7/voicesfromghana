@@ -3,7 +3,7 @@
 		if posts[0].media.photo[0]
 			img.img-responsive(src=''+posts[0].media.photo[0].url alt='No image found')
 		else
-			img.img-responsive(alt='No image found')
+			img.img-responsive#voices-recent-image(src='../images/recent_example.jpg' alt='No image found')
 	.col-xs-6.col-sm-6.col-md-4.voices-recent-black-background.voices-recent-blurb
 		.voices-recent-h1= posts[0].timestamp
 		.voices-recent-h1= posts[0].info.title
