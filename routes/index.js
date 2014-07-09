@@ -13,6 +13,8 @@ module.exports = function(app) {
 	//app.get('/', pageHandlers.blog);
 
 	// For audience
+	app.get('/', pageHandlers.index);
+
 	app.get('/blog', pageHandlers.blog);
 
 	//app.get('/about', pageHandlers.about);
@@ -29,6 +31,8 @@ module.exports = function(app) {
 	app.post('/admin/blog/update/:id', adminHandlers.blogUpdate);
 
 	//app.post('/admin/blog/delete/:id', adminHandlers.blogEdit);
+
+	// robot.txt
 
 	// If url not found
 	app.get('*', defaultHandlers.index);

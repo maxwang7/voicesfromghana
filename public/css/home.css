@@ -1,18 +1,68 @@
-#placeholder {
+.placeholder {
 	height: 75px;
 }
 
 
-.voices-site {
+.voices-site-outside {
 	font: avenir;
 	font-size: 1.25em;
+	background-color: #e0e0e0;
 }
 
-.voices-background {
-	padding: 5em 3em 0 3em;
-	//background-image: url('../images/KimT.png');
-	//background: linear-gradient;
-	border: 1px solid black;
+#voices-background {
+	width: 100%;
+	height: 350px;
+	position: absolute;
+}
+
+.voices-site-inside {
+	position: relative;
+	top: 6.61em;
+	left: 9.21%;
+	width: 82%;
+	padding: 5em;
+	background-color: white;
+}
+
+#voices-border-flag {
+	position: relative;
+	top: -216px;
+	left: -17.5px;
+	display: inline;
+	height: 265px;
+	width: 249px;
+}
+
+#voices-border-flag-div {
+	height: 8em;
+}
+
+.voices-blog-letter {
+	width: 15em;
+}
+
+.voices-col1 {
+	padding: 0 4em 0 0;
+	margin-top: -47px;
+	margin-left: -24px;
+}
+
+.voices-col2 {
+	padding: 0 0 0 2em;
+	border-left: 1px solid black;
+}
+
+#voices-recent-image {
+	width: 100%;
+	height: 235px;
+}
+
+#nav {
+	position: relative;
+	top: -68px;
+	left: 47px;
+	font-size: 1.45em;
+	letter-spacing: 0.01em;
 }
 
 .nav {
@@ -38,34 +88,36 @@
 	font-size: 1.25em;
 }
 
+#nav div a.nav-unselected:link {
+	color: black;
+    text-decoration: none;
+}
+
+#nav div a.nav-unselected:visited {
+	color: black;
+    text-decoration: none;
+}
+
+#nav div a.nav-unselected:hover {
+	color: black;
+	border-bottom: 1px solid black;
+}
+
+#nav div a.nav-unselected:active {
+    text-decoration: none;
+}
+
 #nav-selected {
 	color: #FFBD36;
 	text-decoration: none;
 	border-bottom: 1px solid #FFBD36;
 }
 
-.nav div div a:link {
-	color: black;
-    text-decoration: none;
-}
-
-.nav div div a:visited {
-	color: black;
-    text-decoration: none;
-}
-
-.nav div div a:hover {
-	color: black;
-	border-bottom: 1px solid black;
-}
-
-.nav div div a:active {
-    text-decoration: none;
-}
-
 .voices-recent {
+	/*
 	border: 1em solid #e5e5e5;
 	border-radius: 7px;
+	*/
 }
 
 .voices-recent-blurb {
@@ -80,7 +132,7 @@
 .archive-title-words {
 	text-align: center;
 	text-decoration: none;
-	font-size: 1.5em;
+	font-size: 1.25em;
 	margin-left: -0.5em;
 	margin-bottom: 1em;
 }

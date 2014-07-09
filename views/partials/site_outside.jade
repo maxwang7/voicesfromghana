@@ -1,10 +1,11 @@
 .row
-	.hidden-xs.hidden-sm.col-md-3
-		img(src='images/Border_Black_flag.png' height='250px')
-	.col-xs-12.col-sm-12.col-md-9
-		each pg in ['blog','about','people','photos','thanks']
+	.hidden-xs.hidden-sm.col-md-2#voices-border-flag-div
+		img#voices-border-flag(src='images/Border_Black_flag.png' height='250px')
+	.col-xs-12.col-sm-12.col-md-10#nav
+		.col-xs-2.col-sm-2.col-md-2
+		each pg in ['home','about','people','photos','thanks']
 			.col-xs-2.col-sm-2.col-md-2
 				if current_page === pg
 					a(id='nav-selected' href='/' + pg)= pg
 				else
-					a(href='/' + pg)= pg
+					a.nav-unselected(href='/' + pg)= pg

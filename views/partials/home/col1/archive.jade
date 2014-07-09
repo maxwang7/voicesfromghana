@@ -1,0 +1,19 @@
+.row
+	.col-xs-2.col-sm-2.col-md-2
+		.voices-archive-title
+	.col-xs-3
+		.archive-title-words PREVIOUS
+	.col-xs-7.voices-archive-title
+
+each post in posts
+	div
+		.row
+			.col-xs-1.voices-blurb-date
+				.voices-blurb-date-line1= post.timestamp
+				.voices-blurb-date-line2= post.timestamp
+			.col-xs-6
+				img.voices-blurb-head= post.info.title
+			.voices-blurb-subhead= post.info.location
+			.voices-blurb-body= post.info.description
+			div
+				a.voices-blurb-readmore(href='') [READ MORE]

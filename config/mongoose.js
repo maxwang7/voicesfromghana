@@ -4,7 +4,11 @@
  */
 
 module.exports = function(mongoose) {
-	var DB_SERVER = 'voices'; // server name
+	var DB_SERVER_DEVELOPMENT = 'voices'; // server name
+	var DB_SERVER_PRODUCTION = 'mongodb://:<pass>@candidate.15.mongolayer.com:10001,candidate.16.mongolayer.com:10001/app003132345';
+	var DB_SERVER = process.env.MONGOLAB_URI ||
+  		process.env.MONGOHQ_URL ||
+  		'mongodb://localhost/voices';
 	var Post = require('../models/post.js');
 
 	var db = mongoose.connection;
@@ -30,5 +34,5 @@ module.exports = function(mongoose) {
 		// });
 		// post.save();
 	});
-	mongoose.connect('mongodb://localhost/' + DB_SERVER);
-}
+	mongoose.connect(DB_SERVER);
+};

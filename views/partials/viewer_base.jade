@@ -1,6 +1,8 @@
 extends ../template
 
 block content
-	.container-flexible.voices-site.voices-background
-		include site_outside
-		block site_inside
+	.container-flexible.voices-site-outside
+		img#voices-background(src='../images/Border_Full.jpg' alt='No image')
+		.voices-site-inside
+			include site_outside
+			block site_inside
