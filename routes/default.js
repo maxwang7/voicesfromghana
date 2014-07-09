@@ -10,3 +10,7 @@ exports.home = function(req, res) {
 exports.index = function(req, res) {
 	res.render('error');
 };
+
+exports.robots = function(req, res) {
+	res.sendfile('robots.txt');
+}

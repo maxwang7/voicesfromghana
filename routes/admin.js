@@ -8,7 +8,6 @@ exports.dashboard = function(req, res) {
 };
 
 exports.blogCreateGET = function(req, res) {
-	console.log("1*****************");
 	res.render('admin/create', {debug : true});
 };
 
@@ -40,12 +39,10 @@ exports.blogCreatePOST = function(req, res, next) {
 };
 
 exports.blogGet = function(req, res, next) {
-	console.log('1*******************');
 	Post.findById(req.params.id, function(err, post) {
 		console.log(post);
 		if(err) console.log(err);
 		if(err) next(err);
-		console.log('2*****************');
 		res.render('admin/get', {post: post});
 	});
 };
@@ -66,3 +63,11 @@ exports.blogUpdate = function(req, res, next) {
 		});
 	});
 };
+
+exports.blogDelete = function(req, res, next) {
+	Post.findById(req.params.id, function(err, post) {
+		if(err) next(err);
+		post.remove();
+		res.redirect('/admin/dashboard');
+	})
+}
