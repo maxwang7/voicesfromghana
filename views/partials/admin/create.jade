@@ -1,4 +1,5 @@
 extends ../../template
+include templates/post_form
 
 block content
 	.row
@@ -7,34 +8,6 @@ block content
 			.row
 				h1 Tell the world your story!
 			.row
-				form.form-horizontal(action='/admin/blog/create' method='post')
-					.form-group
-						label.col-xs-2.control-label Title
-						.col-xs-6
-							input.form-control(type='text' name='title' placeholder='The Dippy Donkey goes to Ghana')
-					.form-group
-						label.col-xs-2.control-label Description
-						.col-xs-10
-							input.form-control(type='text' name='description' placeholder='omg I just said smuggle to combine smirk and giggle!')
-					.form-group
-						label.col-xs-2.control-label Story
-						.col-xs-10
-							textarea.form-control(rows='15' name='text' placeholder='Hope you\'re doing well. I can\'t wait to hear about what you\'re experiencing, what you\'ve learned, and how you\'ve grown. The world\'s listening, speak up :\) Love, -Max')
-					.form-group
-						label.col-xs-2.control-label Tags
-						.col-xs-10
-							input.form-control(name='tags' placeholder='#skypingwithdippy, #anagram')
-					.form-group
-						label.col-xs-2.control-label Location
-						.col-xs-10
-							input.form-control(name='location' type='text' placeholder='Accra, Ghana')
-					.form-group
-						.col-xs-11
-						div
-							button.btn.btn-primary(type='submit') Submit
+				- var placeholders = {title: 'The Dippy Donkey goes to Ghana', description: 'omg I just said smuggle to combine smirk and giggle!', story: 'Hope you\'re doing well. I can\'t wait to hear about what you\'re experiencing, what you\'ve learned, and how you\'ve grown. The world\'s listening, speak up :\) Love, -Max', tags: '#skypingwithdippy, #anagram', location: 'Accra, Ghana'};
+				+post_form('/admin/blog/create', placeholders, post)		
 		.col-xs-2
-
-//
-	include templates/post_form
-				- var placeholders = {title: '', description: '', story: '', tags: '', location: ''};
-				+post_form('/admin/blog/create', placeholders)
