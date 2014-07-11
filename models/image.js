@@ -1,4 +1,4 @@
-/* FILE: models/photo.js
+/* FILE: models/image.js
  * --------------------
  * Description: 
  */

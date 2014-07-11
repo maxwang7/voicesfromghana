@@ -1,13 +1,13 @@
 mixin form_field(name, width, type, value, placeholder, rows)
-	.form-group
-		if type === 'submit'
-			.col-xs-11
-			div
-				button.btn.btn-primary(type='submit') Submit
-		else
-			label.col-xs-2.control-label= name
-			div(class=width id=attributes.id)
-				if type === 'textarea'
-					textarea.form-control(rows=""+rows name=""+name.toLowerCase() placeholder=""+placeholder)
-				else
-					input.form-control(type=""+type name=""+name.toLowerCase() value=""+value placeholder=""+placeholder)
+    .form-group
+        if type === 'submit'
+            .col-xs-11
+            div
+                button.btn.btn-primary(type='submit') Submit
+        else
+            label.col-xs-2.control-label= name
+            div(class=width id=attributes.id)
+                if type === 'textarea'
+                    textarea.form-control(rows=""+rows name=""+name.toLowerCase() placeholder=""+placeholder)
+                else
+                    input.form-control(type=""+type name=""+name.toLowerCase() value=""+value placeholder=""+placeholder)
