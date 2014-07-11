@@ -1,0 +1,30 @@
+mixin story-with-media(height)
+    .form-group
+        label.col-xs-2.control-label Story
+        .col-xs-10
+            .form-control(contenteditable='true' style='height:'+height+';')= placeholders.story
+    .form-group
+        label.col-xs-2 Media
+        .col-xs-3 Images
+            input.form-control#voices-image-name(type='text' placeholder='name')
+            input.form-control#voices-image-caption(type='text' placeholder='caption')
+            button.btn.btn-default(type='button' onclick='insertTextAtCursor("image", "#voices-image-name", "#voices-image-caption");') Insert
+        .col-xs-3
+        .col-xs-3
+        script.
+            function insertTextAtCursor(type, name_field, caption_field) {
+                text = '##' + type + ':' + name_field + ':' + caption_field + '##';
+                var sel, range, html;
+                if (window.getSelection) {
+                    sel = window.getSelection();
+                    console.log(sel);
+                    console.log(typeof sel.focusNode);
+                    if (sel.getRangeAt && sel.rangeCount && sel.focusNode !== null) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode( document.createTextNode(text) );
+                    }
+                } else if (document.selection && document.selection.createRange) {
+                    document.selection.createRange().text = text;
+                }
+            }

@@ -1,4 +1,5 @@
-var Post = require('../models/post.js');
+var Post = require('../models/post.js'),
+	Image = require('../models/image.js');
 var crypto = require('crypto');
 
 exports.dashboard = function(req, res) {
@@ -18,6 +19,16 @@ var processTags = function(tags_str) {
 };
 
 exports.blogCreatePOST = function(req, res, next) {
+	// Create new images
+	var count = 0;
+	while(req.body['image'+count]) {
+		var image = new Image({
+			// stuff
+		});
+		count++;
+	}
+
+
 	var post = new Post({
 		info: {
 			title: req.body.title,
@@ -39,32 +50,32 @@ exports.blogCreatePOST = function(req, res, next) {
 	});
 };
 
-exports.blogCreateSIGN = function(req, res, next) {
-	var object_name = req.query.s3_object_name + Date.now();
-	var mime_type = req.query.s3_object_type;
-	var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-	var AWS_ACCESS_KEY = process.env.AWS_SECRET_KEY;
-	var S3_BUCKET = process.env.S3_BUCKET;
+// exports.blogCreateSIGN = function(req, res, next) {
+// 	var object_name = req.query.s3_object_name + Date.now();
+// 	var mime_type = req.query.s3_object_type;
+// 	var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+// 	var AWS_ACCESS_KEY = process.env.AWS_SECRET_KEY;
+// 	var S3_BUCKET = process.env.S3_BUCKET;
 
-	var now = new Date();
-	var expires = Math.ceil((now.getTime() + 10000)/1000); // 10 seconds from now
-    var amz_headers = "x-amz-acl:public-read";
+// 	var now = new Date();
+// 	var expires = Math.ceil((now.getTime() + 10000)/1000); // 10 seconds from now
+//     var amz_headers = "x-amz-acl:public-read";
 
-    var put_request = "PUT\n\n"+mime_type+"\n"+expires+"\n"+amz_headers+"\n/"+S3_BUCKET+"/"+object_name;
+//     var put_request = "PUT\n\n"+mime_type+"\n"+expires+"\n"+amz_headers+"\n/"+S3_BUCKET+"/"+object_name;
 
-    var signature = crypto.createHmac('sha1', AWS_SECRET_KEY).update(put_request).digest('base64');
-    signature = encodeURIComponent(signature.trim());
-    signature = signature.replace('%2B','+');
+//     var signature = crypto.createHmac('sha1', AWS_SECRET_KEY).update(put_request).digest('base64');
+//     signature = encodeURIComponent(signature.trim());
+//     signature = signature.replace('%2B','+');
 
-    var url = 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+object_name;
+//     var url = 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+object_name;
 
-    var credentials = {
-        signed_request: url+"?AWSAccessKeyId="+AWS_ACCESS_KEY+"&Expires="+expires+"&Signature="+signature,
-        url: url
-    };
-    res.write(JSON.stringify(credentials));
-    res.end();
-};
+//     var credentials = {
+//         signed_request: url+"?AWSAccessKeyId="+AWS_ACCESS_KEY+"&Expires="+expires+"&Signature="+signature,
+//         url: url
+//     };
+//     res.write(JSON.stringify(credentials));
+//     res.end();
+// };
 
 exports.blogGet = function(req, res, next) {
 	Post.findById(req.params.id, function(err, post) {
@@ -97,5 +108,12 @@ exports.blogDelete = function(req, res, next) {
 		if(err) next(err);
 		post.remove();
 		res.redirect('/admin/dashboard');
-	})
-}
+	});
+};
+
+// For uploading media. Takes an id in the params field. Parses
+// the text field for '#photo:name#', '#audio:name#', and '#video:name#', then
+// creates a template to upload the number of each media element.
+exports.blogMedia = function(req, res, next) {
+	Post.findById(req.params)
+};
