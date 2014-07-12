@@ -1,0 +1,29 @@
+extends ../../template
+
+block head
+	title Admin: Media Upload
+	link(rel='stylesheet' href='/css/admin/media.css')
+
+block content
+	//each image, index in images
+	.container
+		.row.voices-admin-media-header
+			h1 Media upload
+		.row
+			form.form-horizontal
+				.form-group
+					label.col-xs-2= "Image #" + index
+					.col-xs-4.voices-admin-media-image-container
+						.voices-admin-media-image
+							input.form-control(type='file')
+							p.help-block Select an image file to upload
+						button.btn.btn-default.btn-block(type='button' style='display: none;') Upload
+		script(src='/js/admin/media.js')
+		script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
+		script.
+			var image_uploader = ImageUploader();
+			var $image_fields = $('.voices-admin-media-image-container');
+			image_uploader.register($image_fields[0]);			
+			//- for(var m = 0; m < images.length; m++) {
+			//- 	image_uploader.register($image_fields[m]);
+			//- }

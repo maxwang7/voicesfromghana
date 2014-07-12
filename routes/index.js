@@ -26,7 +26,9 @@ module.exports = function(app) {
 
 	app.post('/admin/blog/create', adminHandlers.blogCreatePOST);
 
-	//app.post('/admin/blog/create/sign', adminHandlers.blogCreateSIGN);
+	app.get('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaGET)
+
+	app.post('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaPOST);
 
 	app.get('/admin/blog/get/:id', adminHandlers.blogGet);
 

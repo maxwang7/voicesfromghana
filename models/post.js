@@ -19,7 +19,7 @@
 
  	media: {
  		audio: [Schema.Types.ObjectId],
- 		photo: [Schema.Types.ObjectId],
+ 		image: [Schema.Types.ObjectId],
  		video: [Schema.Types.ObjectId]
  	},
 
