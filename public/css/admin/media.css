@@ -1,0 +1,16 @@
+/* Prefix with voices-admin-media */
+
+.voices-admin-media-header {
+	padding: 30px;
+}
+
+.voices-admin-media-image-container {
+}
+
+.voices-admin-media-image {
+	height: 370px;
+	width: 370px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	text-align: center;
+}

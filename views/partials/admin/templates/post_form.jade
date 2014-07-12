@@ -5,40 +5,19 @@ mixin post_form(post_url, placeholders, post)
         +form_field('Title', 'col-xs-6', 'text', post.info.title, placeholders.title, '')
         +form_field('Description', 'col-xs-10', 'text', post.info.description, placeholders.description, '')
         +form_field('Story', 'col-xs-10', 'textarea', post.info.story, placeholders.story, '15')
+        .form-group
+            label.col-xs-2.control-label Media tags:
+            .col-xs-3
+                .form-control ##image##
+            .col-xs-3
+                .form-control ##audio##
+            .col-xs-3
+                .form-control ##video##
+            .col-xs-2
+            .col-xs-10
+                p.help-block
+                    | Insert these media tags in the places where you want media in your story, and after you hit submit, you will be taken to a page to upload the media content.
         +form_field('Tags', 'col-xs-10', 'text', post.info.tags, placeholders.tags, '')
         +form_field('Location', 'col-xs-10', 'text', post.info.location, placeholders.location, '')
-        .form-group
-            label.col-xs-2.control-label Images
-            .col-xs-10#voices-create-images
-                input.form-control(type='file' id='voices-image0' name='image0')
-                button.btn.btn-default(type='button')#voices-image0-upload Upload
-                p#voices-image-status0 Test
         input(type='hidden' id='voices-image0-url' name='image0' value='')
         +form_field('', '', 'submit', '', '', '')
-        //- jQuery is loaded in header
-        script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
-        script.
-            AWS.config.update({accessKeyId: 'AKIAJGSNN2L5MQLAT2MA', secretAccessKey: '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'});
-            var bucket = new AWS.S3({params: {Bucket: 'voices-from-ghana'}});
-
-            var fileChooser = document.getElementById('voices-image0');
-            var button = document.getElementById('voices-image0-upload');
-            var results = document.getElementById('voices-image-status0');
-            var imageurl = document.getElementById('voices-image0-url');
-            button.addEventListener('click', function() {
-                var file = fileChooser.files[0];
-                if (file) {
-                    results.innerHTML = '';
-                    var file_name = Date.now() + file.name;
-                    var params = {Key: file_name, ContentType: file.type, Body: file, ACL: 'public-read'};
-                    bucket.putObject(params, function (err, data) {
-                        results.innerHTML = err ? 'ERROR!' : 'UPLOADED.';
-                        if(err) console.log(err);
-                        else {
-                            $(imageurl).val(file_name);
-                        }   
-                    });
-                } else {
-                    results.innerHTML = 'Nothing to upload.';
-                }
-            }, false);
