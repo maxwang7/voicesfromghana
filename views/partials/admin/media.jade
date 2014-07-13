@@ -14,10 +14,16 @@ block content
 				.form-group
 					label.col-xs-2= "Image #" + index
 					.col-xs-4.voices-admin-media-image-container
-						.voices-admin-media-image
-							input.form-control(type='file')
-							p.help-block Select an image file to upload
+						input.form-control(type='file')
+						p.help-block Select an image file to upload
 						button.btn.btn-default.btn-block(type='button' style='display: none;') Upload
+		.modal.fade.bs-example-modal-lg#voices-admin-media-modal(tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true')
+			.modal-dialog.modal-lg test
+				.modal-content#voices-admin-media-modal-content
+					.modal-header#voices-admin-media-modal-header
+						h3.modal-title Crop and Upload
+					.modal-body#voices-admin-media-modal-body
+
 		script(src='/js/admin/media.js')
 		script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
 		script.
