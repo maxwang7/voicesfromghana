@@ -1,0 +1,57 @@
+/* Prefix: voices- */
+
+/* Include css elements that apply across all files in the project */
+
+.voices-row {
+	width: 100%;
+	text-align: center;
+}
+
+/* Columns take up 1/n portion of the row width*/
+.voices-col-2 {
+	width: 49%;
+	display: inline-block;
+}
+
+.voices-col-3 {
+	width: 32%;
+	display: inline-block;
+}
+
+.voices-col-4 {
+	width: 24%;
+	display: inline-block;
+}
+
+.voices-col-5 {
+	width: 19%;
+	display: inline-block;
+}
+
+.voices-col-6 {
+	width: 16%;
+	display: inline-block;
+}
+
+.voices-col-8 {
+	width: 12%;
+	display: inline-block;
+}
+
+.voices-col-10 {
+	width: 9.5%;
+	display: inline-block;
+}
+
+/* Styling classes */
+.voices-hidden {
+	display: none;
+}
+
+.voices-solid-border {
+	border: 1px solid black;
+}
+
+.voices-round-border {
+	border-radius: 1px solid black;
+}
