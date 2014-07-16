@@ -1,15 +1,13 @@
 extends ../../template
 
 block head
-	link(rel='stylesheet' href='css/audience/site_container.css')
-	link(rel='stylesheet' href='css/audience/blog/blog.css')
-	link(rel='stylesheet' href='css/audience/nav_bar.css')
+	link(rel='stylesheet' href='/css/audience/site_container.css')
+	link(rel='stylesheet' href='/css/audience/nav_bar.css')
 	block header
 
 block content
 	.voices-audience-site-container-outside
 		.voices-audience-site-container-background-image-container
-			img.voices-audience-site-container-background-image(src='' alt='')
 		.voices-audience-site-container-inside
 			include nav_bar
 			block contenter

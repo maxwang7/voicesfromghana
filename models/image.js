@@ -9,15 +9,18 @@ var mongoose = require('mongoose'),
 var ImageSchema = new mongoose.Schema({
 	url: String,
 
-	dimensions: {
-		start: {
-			x: Number,
-			y: Number
-		},
-		end: {
-			x: Number,
-			y: Number
-		}
+	most_recent: {
+		x: Number,
+		y: Number,
+		height: Number,
+		width: Number
+	},
+
+	archive: {
+		x: Number,
+		y: Number,
+		height: Number,
+		width: Number
 	},
 
 	timestamp: {type: Date, default: Date.now()}

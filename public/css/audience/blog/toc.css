@@ -1,0 +1,20 @@
+/*Prefix: voices-audience-blog-toc- */
+
+
+.voices-audience-blog-toc-container {
+	text-align: center;
+	padding: 10px;
+}
+
+	.voices-audience-blog-toc-title {
+		font-size: 1.25em;
+		margin-bottom: 10px;
+	}
+
+	.voices-audience-blog-toc-entry {
+		margin-bottom: 10px;
+	}
+
+	.voices-audience-blog-toc-placeholder {
+		height: 25px;
+	}

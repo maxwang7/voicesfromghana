@@ -20,7 +20,8 @@
  	media: {
  		audio: [Schema.Types.ObjectId],
  		image: [Schema.Types.ObjectId],
- 		video: [Schema.Types.ObjectId]
+ 		video: [Schema.Types.ObjectId],
+ 		primary_image: Number // The primary image is the index of the image that will appear in the preview
  	},
 
  	timestamp: {type: Date, default: Date.now()}

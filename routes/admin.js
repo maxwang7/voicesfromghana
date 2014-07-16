@@ -99,7 +99,7 @@ exports.blogDelete = function(req, res, next) {
 exports.blogAddMediaGET = function(req, res, next) {
 	Post.findById(req.params.id, function(err, post) {
 		if(err) next(err);
-		res.render('admin/media', {post: post});
+		res.render('admin/media', {post: post, num_images: 2}); // !!! Need to make dynamic
 	});
 };
 
@@ -107,22 +107,34 @@ exports.blogAddMediaGET = function(req, res, next) {
 // Creates new media objects, then puts the object ids in
 // the post's media arrays.
 exports.blogAddMediaPOST = function(req, res, next) {
-	// Create Image objects
-	var images = JSON.stringify(req.body.images);
-	var image_ids = [];
-	req.body.images.forEach(function(element, index, array) {
-		var img = new Img(element);
-		img.save(function(err, product, numAffected) {
-			image_ids.append(img._id);
-			if(err) next(err);
+	// Create Image object
+	var media;
+	if(req.body.type === 'image') {
+		media = new Img({
+			url: req.body.url
 		});
-	});
-	// Create Video objects
-	// Create Audio objects
+	}
+	// Get Post
 	Post.findById(req.params.id, function(err, post) {
-		if(err) next(err);
-		post.media.image = image_ids;
-		// add video and audio objects
-		post.save();
+		post.media.image.push(media._id);
+		post.save(function(err, product, numAffected) {
+			if(err) {
+				res.send(500);
+			} else {
+				res.send(200);
+			}
+		})
+	});
+};
+
+exports.blogAddImagePreviewPOST = function(req, res, next) {
+	var image;
+	Image.findById(req.body.id, function(err, img) {
+		if(err) res.send(500);
+		img.most_recent = req.body.most_recent;
+		img.archive = req.body.archive;
+		img.save(function(err, product, numAffected) {
+			if(err) res.send(500);
+		})
 	});
 };

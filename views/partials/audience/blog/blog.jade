@@ -1,8 +1,22 @@
 extends ../site_container
 
 block header
-	link(rel='stylesheet' href='css/audience/blog/blog.css')
+	link(rel='stylesheet' href='/css/audience/blog/blog.css')
+	link(rel='stylesheet' href='/css/audience/blog/most_recent.css')
+	link(rel='stylesheet' href='/css/audience/blog/note.css')
+	link(rel='stylesheet' href='/css/audience/blog/archive.css')
+	link(rel='stylesheet' href='/css/audience/blog/toc.css')
 
 block contenter
-	.voices-row.voices-audience-blog-row-1 Test
-	.voices-row.voices-audience-blog-row-2 Test
+	.voices-row.voices-audience-blog-row-1
+		.voices-audience-blog-row-1-recent
+			include most_recent
+		.voices-audience-blog-row-1-note
+			include note
+	.voices-row.voices-audience-blog-row-2
+		.voices-audience-blog-row-2-archive
+			include archive
+		.voices-audience-blog-row-2-toc
+			include toc
+	.voices-row.voices-audience-blog-row-3
+		.voices-audience-blog-row-3-footer

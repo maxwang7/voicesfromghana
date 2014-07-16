@@ -1,0 +1,22 @@
+/*Prefix: voices-audience-blog-note- */
+
+.voices-audience-blog-note-container {
+	display: inline-block;
+
+	text-align: center;
+
+	width: 225px;
+	height: 492px;
+}
+
+	.voices-audience-blog-note-letter-container {
+		padding-top: 15px;
+	}
+
+		#voices-audience-blog-note-letter {
+			height: 280px
+		}
+
+	#voices-audience-blog-note-profile {
+		height: 165px;
+	}
