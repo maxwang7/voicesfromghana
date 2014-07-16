@@ -2,34 +2,72 @@ extends ../../template
 
 block head
 	title Admin: Media Upload
+	include admin_header
 	link(rel='stylesheet' href='/css/admin/media.css')
 
 block content
-	//each image, index in images
-	.container
-		.row.voices-admin-media-header
-			h1 Media upload
-		.row
-			form.form-horizontal
-				.form-group
-					label.col-xs-2= "Image #" + index
-					.col-xs-4.voices-admin-media-image-container
-						input.form-control(type='file')
-						p.help-block Select an image file to upload
-						button.btn.btn-default.btn-block(type='button' style='display: none;') Upload
-		.modal.fade.bs-example-modal-lg#voices-admin-media-modal(tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true')
-			.modal-dialog.modal-lg test
-				.modal-content#voices-admin-media-modal-content
-					.modal-header#voices-admin-media-modal-header
-						h3.modal-title Crop and Upload
-					.modal-body#voices-admin-media-modal-body
+	#voices-admin-media-container
+		input#voices-admin-media-num-images(type='hidden' value=num_images)
+		input#voices-admin-media-post-id(type='hidden' value=post._id)
 
-		script(src='/js/admin/media.js')
-		script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
-		script.
-			var image_uploader = ImageUploader();
-			var $image_fields = $('.voices-admin-media-image-container');
-			image_uploader.register($image_fields[0]);			
-			//- for(var m = 0; m < images.length; m++) {
-			//- 	image_uploader.register($image_fields[m]);
-			//- }
+	script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
+	script(src='/js/admin/media.js')
+	script.
+		var $container = $('#voices-admin-media-container')
+		var num_images = $('#voices-admin-media-num-images').val()
+		var post_id = $('#voices-admin-media-post-id').val()
+
+		var queue = Queue()
+		var aws = AWSUploader('voices-from-ghana', 'AKIAJGSNN2L5MQLAT2MA', 'u12av9CFJSYOf9VYqQ9DnzYMjHe8ZqQVPyr66mWl', 'https://s3-us-west-2.amazonaws.com/voices-from-ghana/')
+		var previewer = PreviewHandler()
+
+		for(var m = 0; m < num_images; m++) {
+			var uploader = Uploader($container, 'image', 'text', aws, post_id)
+			queue.append(uploader)
+		}
+
+		var every_callback = function(image) {
+			previewer.register_image(image)
+		}
+
+		var complete_callback = function() {
+			previewer.run('/', $container[0]) // !!! TODO - Get URL
+		}
+
+		queue.execute(every_callback, complete_callback)
+
+	//- //each image, index in images
+	//- .container
+	//- 	.row.voices-admin-media-header
+	//- 		h1 Media upload
+	//- 	.row
+	//- 		form.form-horizontal
+	//- 			.form-group
+	//- 				label.col-xs-2 Preview image
+	//- 				.col-xs-10
+	//- 					input.form-control(type='number' name='preview_image')
+	//- 					p.help-block Enter the number of the image you would like to appear in the preview box.
+	//- 	.row
+	//- 		form.form-horizontal
+	//- 			.form-group
+	//- 				label.col-xs-2= "Image #" + index
+	//- 				.col-xs-4.voices-admin-media-image-container
+	//- 					input.form-control(type='file')
+	//- 					p.help-block Select an image file to upload
+	//- 					button.btn.btn-default.btn-block(type='button' style='display: none;') Upload
+	//- 	.modal.fade.bs-example-modal-lg#voices-admin-media-modal(tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true')
+	//- 		.modal-dialog.modal-lg test
+	//- 			.modal-content#voices-admin-media-modal-content
+	//- 				.modal-header#voices-admin-media-modal-header
+	//- 					h3.modal-title Crop and Upload
+	//- 				.modal-body#voices-admin-media-modal-body
+
+	//- 	script(src='/js/admin/media.js')
+	//- 	script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
+	//- 	script.
+	//- 		var image_uploader = ImageUploader();
+	//- 		var $image_fields = $('.voices-admin-media-image-container');
+	//- 		image_uploader.register($image_fields[0]);			
+	//- 		//- for(var m = 0; m < images.length; m++) {
+	//- 		//- 	image_uploader.register($image_fields[m]);
+	//- 		//- }

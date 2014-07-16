@@ -26,15 +26,16 @@ module.exports = function(app) {
 
 	app.post('/admin/blog/create', adminHandlers.blogCreatePOST);
 
-	app.get('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaGET)
-
-	app.post('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaPOST);
-
 	app.get('/admin/blog/get/:id', adminHandlers.blogGet);
 
 	app.post('/admin/blog/update/:id', adminHandlers.blogUpdate);
 
 	app.post('/admin/blog/delete/:id', adminHandlers.blogDelete);
+
+	// media handlers
+	app.get('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaGET)
+
+	app.post('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaPOST);
 
 	// robot.txt
 	app.get('/robots.txt', defaultHandlers.robots);

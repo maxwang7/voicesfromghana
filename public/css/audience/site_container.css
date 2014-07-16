@@ -1,27 +1,24 @@
 /* Prefix: voices-audience-site-container- */
 
+
 body {
 	/* Font needs to be changed to Google font */
 	font-family: avenir;
-	background-color: #e0e0e0;
+	background-color: #eeeeee;
+	text-align: center;
+	margin-left: -5px;
 }
 
 .voices-audience-site-container-outside {
-	width: 1280px;
+	width: 1285px;
 
-	border: 1px solid black;
 	background-image: url('/images/site-border.png');
 	background-repeat: no-repeat;
 	text-align: center;
 	margin-top: -95px;
-}
-
-.voices-audience-site-container-background-image {
-
-}
-
-.voices-audience-site-container-background-image {
-	/* Need to write code so that it doesn't push out stuff */
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #e0e0e0;
 }
 
 .voices-audience-site-container-inside {
