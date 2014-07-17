@@ -17,7 +17,7 @@ module.exports = function(app) {
 
 	app.get('/blog', pageHandlers.blog);
 
-	//app.get('/about', pageHandlers.about);
+	app.get('/about', pageHandlers.about);
 
 	// For Christine
 	app.get('/admin/dashboard', adminHandlers.dashboard);
@@ -28,14 +28,20 @@ module.exports = function(app) {
 
 	app.get('/admin/blog/get/:id', adminHandlers.blogGet);
 
+	app.get('/admin/blog/get/json/:id', adminHandlers.blogGetJSON);
+
 	app.post('/admin/blog/update/:id', adminHandlers.blogUpdate);
 
 	app.post('/admin/blog/delete/:id', adminHandlers.blogDelete);
 
 	// media handlers
-	app.get('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaGET)
+	app.get('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaGET);
 
 	app.post('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaPOST);
+
+	app.post('/admin/blog/addImagePreviewPOST/:id', adminHandlers.blogAddImagePreviewPOST);
+
+	app.get('/admin/blog/getMedia/:id', adminHandlers.blogGetMedia);
 
 	// robot.txt
 	app.get('/robots.txt', defaultHandlers.robots);

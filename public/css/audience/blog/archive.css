@@ -70,24 +70,29 @@
 				font-family: serif;
 				word-spacing: 0.5em;
 				height: 155px;
+				overflow: scroll;
 			}
 
-			.voices-audience-blog-archive-col-3-readmore a:link {
-				color: #FFBD36;
-				text-decoration: none;
+			.voices-audience-blog-archive-col-3-readmore {
+				margin: 10px;
 			}
 
-			.voices-audience-blog-archive-col-3-readmore a:visited {
-				color: #FFBD36;
-				text-decoration: none;
-			}
+				.voices-audience-blog-archive-col-3-readmore a:link {
+					color: #FFBD36;
+					text-decoration: none;
+				}
 
-			.voices-audience-blog-archive-col-3-readmore a:hover {
-				color: #FFBD36;
-				text-decoration: underline;
-			}
+				.voices-audience-blog-archive-col-3-readmore a:visited {
+					color: #FFBD36;
+					text-decoration: none;
+				}
 
-			.voices-audience-blog-archive-col-3-readmore a:active {
-				color: #FFBD36;
-				text-decoration: none;
-			}
+				.voices-audience-blog-archive-col-3-readmore a:hover {
+					color: #FFBD36;
+					text-decoration: underline;
+				}
+
+				.voices-audience-blog-archive-col-3-readmore a:active {
+					color: #FFBD36;
+					text-decoration: none;
+				}

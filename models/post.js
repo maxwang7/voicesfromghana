@@ -18,9 +18,9 @@
  	isProfile: Boolean,
 
  	media: {
- 		audio: [Schema.Types.ObjectId],
- 		image: [Schema.Types.ObjectId],
- 		video: [Schema.Types.ObjectId],
+ 		audio: [{ type : Schema.Types.ObjectId, ref : 'Audio' }],
+ 		image: [{ type : Schema.Types.ObjectId, ref : 'Image' }],
+ 		video: [{ type : Schema.Types.ObjectId, ref : 'Video' }],
  		primary_image: Number // The primary image is the index of the image that will appear in the preview
  	},
 

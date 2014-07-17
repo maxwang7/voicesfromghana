@@ -1,10 +1,11 @@
 .voices-audience-blog-recent-container
+	- var most_recent = posts[0]
 	.voices-audience-blog-recent-image-container
-		img#voices-audience-blog-recent-image(src='/images/recent_example.jpg' alt='Image from blog post')
+		img#voices-audience-blog-recent-image(src=most_recent.media.image[most_recent.media.primary_image].url alt='Image from blog post')
 	.voices-audience-blog-recent-sneakpeak-container
-		.voices-audience-blog-recent-sneakpeak-date JULY 29
-		.voices-audience-blog-recent-sneakpeak-title Insert Fantastically Interesting Title Here
-		.voices-audience-blog-recent-sneakpeak-location Accra, Ghana
-		.voices-audience-blog-recent-sneakpeak-description Blurb is super awesome and full of interestin info Blurb is super awesome and full of interestin info Blurb is super awesome and full of interestin info 
+		.voices-audience-blog-recent-sneakpeak-date= months[most_recent.timestamp.getMonth()] + ' ' + most_recent.timestamp.getDate()
+		.voices-audience-blog-recent-sneakpeak-title= most_recent.info.title
+		.voices-audience-blog-recent-sneakpeak-location= most_recent.info.location
+		.voices-audience-blog-recent-sneakpeak-description= most_recent.info.description
 		.voices-audience-blog-recent-sneakpeak-readmore 
-			a(href='') READ FULL POST >
+			a(href='/blog/' + most_recent._id) READ FULL POST >
