@@ -5,9 +5,16 @@ exports.index = function(req, res) {
 }
 
 exports.blog = function(req, res) {
-	Post.find({}, function(err, posts) {
-		if(err) console.log(err);
-		if(err) next(err);
-		res.render('audience/blog/blog', {posts: posts, current_page: 'home'});
-	});
+	Post.find({})
+		.sort('-timestamp')
+		.populate('media.image')
+		.exec(function(err, posts) {
+			if(err) console.log(err);
+			if(err) next(err);
+			res.render('audience/blog/blog', {posts: posts, current_page: 'home'});
+		});
 };
+
+exports.about = function(req, res) {
+	res.render('audience/about/about', {current_page: 'about'});
+}

@@ -6,12 +6,21 @@ block head
 	link(rel='stylesheet' href='/css/admin/media.css')
 
 block content
-	#voices-admin-media-container
-		input#voices-admin-media-num-images(type='hidden' value=num_images)
-		input#voices-admin-media-post-id(type='hidden' value=post._id)
+	.container
+		.col-xs-3
+		.col-xs-6
+			h1 Media Upload
+			.form-group.well#voices-admin-media-container
+				input#voices-admin-media-num-images(type='hidden' value=num_images)
+				input#voices-admin-media-post-id(type='hidden' value=post._id)
+		.col-xs-3
 
 	script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
-	script(src='/js/admin/media.js')
+	script(src='/js/admin/media/AWSUploader.js')
+	script(src='/js/admin/media/ImageCropper.js')
+	script(src='/js/admin/media/PreviewHandler.js')
+	script(src='/js/admin/media/Queue.js')
+	script(src='/js/admin/media/Uploader.js')
 	script.
 		var $container = $('#voices-admin-media-container')
 		var num_images = $('#voices-admin-media-num-images').val()
@@ -21,53 +30,98 @@ block content
 		var aws = AWSUploader('voices-from-ghana', 'AKIAJGSNN2L5MQLAT2MA', 'u12av9CFJSYOf9VYqQ9DnzYMjHe8ZqQVPyr66mWl', 'https://s3-us-west-2.amazonaws.com/voices-from-ghana/')
 		var previewer = PreviewHandler()
 
-		for(var m = 0; m < num_images; m++) {
-			var uploader = Uploader($container, 'image', 'text', aws, post_id)
-			queue.append(uploader)
-		}
+		var post
+		$.ajax({
 
-		var every_callback = function(image) {
-			previewer.register_image(image)
-		}
+			url: '/admin/blog/get/json/' + post_id,
+			dataType: 'json'
 
-		var complete_callback = function() {
-			previewer.run('/', $container[0]) // !!! TODO - Get URL
-		}
+		}).success(function(data, textStatus, jqXHR) {
 
-		queue.execute(every_callback, complete_callback)
+			console.log('Success!')
+			console.log(data)
 
-	//- //each image, index in images
-	//- .container
-	//- 	.row.voices-admin-media-header
-	//- 		h1 Media upload
-	//- 	.row
-	//- 		form.form-horizontal
-	//- 			.form-group
-	//- 				label.col-xs-2 Preview image
-	//- 				.col-xs-10
-	//- 					input.form-control(type='number' name='preview_image')
-	//- 					p.help-block Enter the number of the image you would like to appear in the preview box.
-	//- 	.row
-	//- 		form.form-horizontal
-	//- 			.form-group
-	//- 				label.col-xs-2= "Image #" + index
-	//- 				.col-xs-4.voices-admin-media-image-container
-	//- 					input.form-control(type='file')
-	//- 					p.help-block Select an image file to upload
-	//- 					button.btn.btn-default.btn-block(type='button' style='display: none;') Upload
-	//- 	.modal.fade.bs-example-modal-lg#voices-admin-media-modal(tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true')
-	//- 		.modal-dialog.modal-lg test
-	//- 			.modal-content#voices-admin-media-modal-content
-	//- 				.modal-header#voices-admin-media-modal-header
-	//- 					h3.modal-title Crop and Upload
-	//- 				.modal-body#voices-admin-media-modal-body
+			post = data
 
-	//- 	script(src='/js/admin/media.js')
-	//- 	script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
-	//- 	script.
-	//- 		var image_uploader = ImageUploader();
-	//- 		var $image_fields = $('.voices-admin-media-image-container');
-	//- 		image_uploader.register($image_fields[0]);			
-	//- 		//- for(var m = 0; m < images.length; m++) {
-	//- 		//- 	image_uploader.register($image_fields[m]);
-	//- 		//- }
+			for(var m = 0; m < num_images; m++) {
+				var uploader = Uploader($container, 'image', '<p class="help-block">Select image #' + (m+1) + '. This was your story: </p><p>' + post.info.text + "</p>", aws, post_id)
+				queue.append(uploader)
+			}
+
+			var every_callback = function(image) {
+				previewer.register_image(image)
+			}
+
+			var complete_callback = function() {
+				previewer.run($container[0], function(container_, help_block_, selected_image_, selected_image_index_) {
+					var $container = $(container_),
+						$help_block = $(help_block_)
+						$selected_image = $(selected_image_)
+
+					$selected_image.show()
+							.width('100%')
+							.appendTo($container)
+					$help_block.html('Crop the image for the most recent preview display.')
+
+					// Handlers
+					var cropper = ImageCropper()
+					var most_recent_ratio = 0.7632,
+						archive_ratio = 0.7486,
+						post_url = '/admin/blog/addImagePreviewPOST/' + post_id
+
+
+					var $save_btn_container = $('<div></div>').appendTo($container)
+
+					most_recent_crop_handler = function(dimensions) {
+						// data to be sent to the backend
+						var data = {
+							selected_image_url: $selected_image.attr('src'),
+							selected_image_index : selected_image_index_,
+							post_id : post_id
+						}
+						// Save dimension in data to send later
+						data.most_recent = dimensions
+						
+						// Call next crop function
+						var archive_crop_handler = function(dimensions) {
+							// Save dimensions to data objects
+							data.archive = dimensions
+							// success handler
+							var success_handler,
+								err_handler
+
+							// Send data to server
+							var send_data = function() {
+								$.ajax({
+									type: 'POST',
+									url: post_url,
+									data: data,
+									success: success_handler,
+									error: err_handler
+								})
+							}
+
+							success_handler = function() {
+								window.location.replace('/admin/dashboard')
+							}
+
+							err_handler = function() {
+								send_data()
+							}
+
+							send_data()
+						}
+
+						cropper.crop($selected_image[0], archive_ratio, $container, $save_btn_container[0], archive_crop_handler)
+					}
+
+					cropper.crop($selected_image[0], most_recent_ratio, $container, $save_btn_container[0], most_recent_crop_handler)
+
+				})
+			}
+
+			queue.execute(every_callback, complete_callback)
+
+		})
+
+		

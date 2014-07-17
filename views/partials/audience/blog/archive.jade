@@ -1,18 +1,18 @@
-//- each post, index in posts
-//- 	if index !== 0 // Not the most recent post
-
-.voices-audience-blog-archive-container
-	.voices-audience-blog-archive-col-1
-		.voices-audience-blog-archive-col-1-date 
-			.voices-audience-blog-archive-col-1-date-row-1 JUNE
-			.voices-audience-blog-archive-col-1-date-row-2 23
-	.voices-audience-blog-archive-col-2
-		.voices-audience-blog-archive-col-2-image-container
-			img#voices-audience-blog-archive-col-2-image(src='/images/recent_example.jpg' alt='Companion image')
-	.voices-audience-blog-archive-col-3
-		.voices-audience-blog-archive-col-3-container
-			.voices-audience-blog-archive-col-3-title Title of blog post filler text interesting stuff
-			.voices-audience-blog-archive-col-3-location Accra, Ghana
-			.voices-audience-blog-archive-col-3-description This is going to be a few sentences blurb about the blog post, highlighting some of the things contained within the actual post and the names of people I've intereviewed
-			.voices-audience-blog-archive-col-3-readmore
-				a(href='') [READ MORE]
+each post, index in posts
+	//- Not the most recent post
+	if index != 0
+		.voices-audience-blog-archive-container
+			.voices-audience-blog-archive-col-1
+				.voices-audience-blog-archive-col-1-date 
+					.voices-audience-blog-archive-col-1-date-row-1= months[post.timestamp.getMonth()]
+					.voices-audience-blog-archive-col-1-date-row-2= post.timestamp.getDate()
+			.voices-audience-blog-archive-col-2
+				.voices-audience-blog-archive-col-2-image-container
+					img#voices-audience-blog-archive-col-2-image(src=post.media.image[post.media.primary_image].url alt='Companion image')
+			.voices-audience-blog-archive-col-3
+				.voices-audience-blog-archive-col-3-container
+					.voices-audience-blog-archive-col-3-title= post.info.title
+					.voices-audience-blog-archive-col-3-location= post.info.location
+					.voices-audience-blog-archive-col-3-description= post.info.description
+					.voices-audience-blog-archive-col-3-readmore
+						a(href='/blog/' + post._id) [READ MORE]

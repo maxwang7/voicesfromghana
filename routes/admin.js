@@ -2,8 +2,7 @@ var Post = require('../models/post.js'),
 	Img = require('../models/image.js');
 	// Audio = require('../models/audio.js'),
 	// Video = require('../models/video.js');
-
-var crypto = require('crypto');
+var utilities = require('./admin/utilities');
 
 exports.dashboard = function(req, res) {
 	Post.find({}, function(err, posts) {
@@ -16,19 +15,6 @@ exports.blogCreateGET = function(req, res) {
 	res.render('admin/create', {debug : true});
 };
 
-// Need to finish implementation!
-var processTags = function(tags_str) {
-	return tags_str;
-};
-
-
-// Need to finish implementation!
-var story_contains_media = function(story) {
-	return story.indexOf('##image') !== -1 ||
-		story.indexOf('##video') !== -1 ||
-		story.indexOf('##audio') !== -1;
-}
-
 exports.blogCreatePOST = function(req, res, next) {
 	// Create new images
 	var count = 0;
@@ -38,7 +24,7 @@ exports.blogCreatePOST = function(req, res, next) {
 			title: req.body.title,
 			description: req.body.description,
 			text: req.body.story,
-			tags: processTags(req.body.tags),
+			tags: utilities.processTags(req.body.tags),
 			location: req.body.location
 		},
 		isProfile: req.body.isProfile,
@@ -51,10 +37,10 @@ exports.blogCreatePOST = function(req, res, next) {
 
 	post.save(function(err, product, numAffected) {
 		if(err) next(err);
-		if(story_contains_media(product.info.text)) {
+		if(utilities.contains_media(product.info.text)) {
 			res.redirect('/admin/blog/addMedia/' + post._id);
 		} else {
-			res.redirect('/admin/dashboard')
+			res.redirect('/admin/dashboard');
 		}
 	});
 };
@@ -68,6 +54,15 @@ exports.blogGet = function(req, res, next) {
 	});
 };
 
+exports.blogGetJSON = function(req, res, next) {
+	Post.findById(req.params.id, function(err, post) {
+		console.log(post);
+		if(err) console.log(err);
+		if(err) next(err);
+		res.json(post);
+	});
+}
+
 exports.blogUpdate = function(req, res, next) {
 	Post.findById(req.params.id, function(err, post) {
 		if(err) next(err);
@@ -75,7 +70,7 @@ exports.blogUpdate = function(req, res, next) {
 			title: req.body.title,
 			description: req.body.description,
 			text: req.body.text,
-			tags: processTags(req.body.tags),
+			tags: utilities.processTags(req.body.tags),
 			location: req.body.location
 		};
 		post.save(function(err, product, numAffected) {
@@ -99,7 +94,11 @@ exports.blogDelete = function(req, res, next) {
 exports.blogAddMediaGET = function(req, res, next) {
 	Post.findById(req.params.id, function(err, post) {
 		if(err) next(err);
-		res.render('admin/media', {post: post, num_images: 2}); // !!! Need to make dynamic
+		var num_images = utilities.count_images(post.info.text);
+		res.render('admin/media', {
+			post: post,
+			num_images: num_images
+		}); // !!! Need to make dynamic
 	});
 };
 
@@ -111,8 +110,9 @@ exports.blogAddMediaPOST = function(req, res, next) {
 	var media;
 	if(req.body.type === 'image') {
 		media = new Img({
-			url: req.body.url
+			url: req.body.url,
 		});
+		media.save();
 	}
 	// Get Post
 	Post.findById(req.params.id, function(err, post) {
@@ -123,18 +123,42 @@ exports.blogAddMediaPOST = function(req, res, next) {
 			} else {
 				res.send(200);
 			}
-		})
+		});
 	});
 };
 
 exports.blogAddImagePreviewPOST = function(req, res, next) {
-	var image;
-	Image.findById(req.body.id, function(err, img) {
-		if(err) res.send(500);
-		img.most_recent = req.body.most_recent;
-		img.archive = req.body.archive;
-		img.save(function(err, product, numAffected) {
-			if(err) res.send(500);
-		})
+	var condition = { url : req.body.selected_image_url },
+		update = {
+			most_recent : req.body.most_recent, 
+			archive: req.body.archive
+		},
+		options = { multi : true };
+
+	Img.update(condition, update, options, function(err, numAffected, rawResponse) {
+		if(err) {
+			res.send(500);
+		}
+
+		Post.findById(req.params.id, function(err, post) {
+			if(err) {
+				res.send(500);
+			}
+			post.media.primary_image = req.body.selected_image_index;
+			post.save();
+			res.redirect('admin/dashboard');
+		});
 	});
+};
+
+exports.blogGetMedia = function(req, res, next) {
+	Post
+		.findById(req.params.id)
+		.populate('media.image')
+		.exec(function(err, post) {
+			if(err) {
+				res.send(500);
+			}
+			res.render('admin/view_media', { images : post.media.image });
+		});
 };

@@ -16,6 +16,25 @@ block content
 						.col-xs-6
 							input.form-control(type='text' name='title' value=''+post.info.title)
 					.form-group
+						label.col-xs-2.control-label Description
+						.col-xs-6
+							input.form-control(type='text' name='description' value=''+post.info.description)
+					.form-group
+						label.col-xs-2.control-label Story
+						.col-xs-6
+							input.form-control(type='text' name='text' value='text'+post.info.text)
+					.form-group
+						label.col-xs-2.control-label Tags
+						.col-xs-6
+							input.form-control(type='text' name='text' value='tags'+post.info.tags)
+					.form-group
+						label.col-xs-2.control-label Location
+						.col-xs-6
+							input.form-control(type='text' name='text' value='location'+post.info.location)
+					.form-group
+						label.col-xs-2
+							a(href='/admin/blog/getMedia/' + post._id) Click to see images
+					.form-group
 						.col-xs-11
 						div
 							button.btn.btn-primary(type='submit') Submit

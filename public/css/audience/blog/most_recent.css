@@ -63,7 +63,7 @@
 			font-family: garamond;
 			letter-spacing: 0.1em;
 			line-height: 1.5em;
-			overflow: hidden;
+			overflow: scroll;
 			height: 12.45em;
 		}
 

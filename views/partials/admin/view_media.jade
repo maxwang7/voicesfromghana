@@ -1,0 +1,13 @@
+extends ../../template
+
+block head
+	include admin_header
+
+block content
+	.container
+		.col-xs-3
+		.col-xs-6
+			h1 Images
+			each image in images
+				img(src=image.url alt='Not available' width='200px')
+		.col-xs-3

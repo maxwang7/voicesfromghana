@@ -1,0 +1,22 @@
+/* Prefix: voices-audience-about- */
+
+.voices-audience-about-site-container {
+	padding: 75px 10px 10px 10px;
+	padding-top: 75px;
+	background-color: white;
+
+	text-align: left;
+}
+
+	.voices-audience-about-the-issue {
+		color: #FFBD36;
+		font-family: avenir;
+		font-size: 30px;
+		width: 100%;
+		border-bottom: 3px solid #eeb42b;
+		font-weight: 600;
+	}
+
+	.voices-audience-about-the-issue-text {
+		padding-left: 350px;
+	}

@@ -3,10 +3,8 @@
 		img#voices-audience-navbar-flag(src='images/navbar-black_flag.png' alt='Voices from Ghana')
 	.voices-audience-navbar-nav
 		- var pages = ['blog', 'about', 'people', 'photos', 'thanks'];
-		//- For development only:
-		- var selected_page = 'blog'
 		each page in pages
-			if page === selected_page
+			if page === current_page
 				.voices-audience-navbar-nav-page
 					a(href='/'+page)#voices-audience-navbar-selected= page
 				span.voices-audience-navbar-nav-placeholders
