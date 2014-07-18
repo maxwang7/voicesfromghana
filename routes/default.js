@@ -8,9 +8,9 @@ exports.home = function(req, res) {
 };
 
 exports.index = function(req, res) {
-	res.render('error');
+	res.render('audience/error/error');
 };
 
 exports.robots = function(req, res) {
 	res.sendfile('robots.txt');
-}
+};
