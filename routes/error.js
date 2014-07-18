@@ -9,7 +9,7 @@ exports.err404 = function(req, res, next) {
 // no stacktraces leaked to user
 exports.err500 = function(err, req, res, next) {
 	res.status(err.status || 500);
-    res.render('error', {
+    res.render('audience/error/error', {
         message: err.message,
         error: {}
     });
