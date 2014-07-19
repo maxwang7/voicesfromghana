@@ -1,0 +1,64 @@
+/* Prefix: voices-audience-thanks- */
+
+.voices-audience-thanks-top-placeholder {
+	height: 75px;
+}
+
+.voices-audience-thanks-container {
+	text-align: left;
+	font-size: 1.25em;
+}
+	.voices-audience-thanks-note-container {
+		float: left;
+		margin: 50px 0 0 -20px;
+
+		box-shadow: -3px 2px 6px 2px gray;
+
+		transform: rotate(-3deg);
+		-ms-transform:rotate(-3deg); /* IE 9 */
+		-webkit-transform:rotate(-3deg); /* Opera, Chrome, and Safari */
+	}
+		.voices-audience-thanks-note-image {
+			width: 350px;
+		}
+
+	.voices-audience-thanks-text {
+		background-color: #F8F8F8;
+		border: 2px solid #D8D8D8;
+		
+		padding: 25px;
+		width: 550px;
+
+		float: right;
+	}
+		.voices-audience-thanks-text-row {
+			margin: 0 0 15px 0;
+		}
+			.voices-audience-thanks-text-message {
+				font-style: italic;
+				font-weight: 600;
+				margin: 0 0 0.5em 0;
+			}
+
+			.voices-audience-thanks-text-names {
+
+			}
+
+				.voices-audience-thanks-text-names-col {
+					width: 183px;
+					display: inline-block;
+				}
+
+					.voices-audience-thanks-text-names-row {
+
+					}
+
+				.voices-audience-thanks-text-names-storytelling-logo-container {
+					display: inline-block;
+					width: 360px;
+					float: right;
+				}
+					.voices-audience-thanks-text-names-storytelling-logo {
+						
+						width: 300px;
+					}
