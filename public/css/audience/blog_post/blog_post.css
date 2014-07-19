@@ -1,0 +1,25 @@
+/* Prefix: voices-audience-blog-post- */
+
+.voices-audience-blog-post-top-placeholder {
+	height: 100px;
+}
+
+.voices-audience-blog-post-content {
+	text-align: left;
+	font-family: avenir;
+	min-height: 720px;
+}
+
+	.voices-audience-blog-post-title {
+		color: #FFBD36;
+		font-size: 3em;
+		font-weight: 600;
+		padding: 0.25em 0 0.25em 0;
+	}
+
+	.voices-audience-blog-post-time-location {
+		color: #999999;
+		font-weight: 400;
+		font-size: 1.5em;
+		padding: 0.25em 0 0.25em 0;
+	}

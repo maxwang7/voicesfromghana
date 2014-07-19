@@ -17,7 +17,11 @@ module.exports = function(app) {
 
 	app.get('/blog', pageHandlers.blog);
 
+	app.get('/blog/:id', pageHandlers.post);
+
 	app.get('/about', pageHandlers.about);
+
+	app.get('/thanks', pageHandlers.thanks);
 
 	// For Christine
 	app.get('/admin/dashboard', adminHandlers.dashboard);
@@ -35,6 +39,18 @@ module.exports = function(app) {
 	app.post('/admin/blog/delete/:id', adminHandlers.blogDelete);
 
 	// media handlers
+	/*
+	app.post('/admin/image/create', imageHandlers.create);
+
+	app.get('/admin/image/get/:id', imageHandlers.get);
+
+	app.post('/admin/image/update/:id', imageHandlers.update);
+
+	app.post('/admin/image/delete/:id', imageHandlers.delete);
+
+	app.post('/admin/image/crop/:id', imageHandlers.crop);
+	*/
+
 	app.get('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaGET);
 
 	app.post('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaPOST);

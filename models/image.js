@@ -9,6 +9,15 @@ var mongoose = require('mongoose'),
 var ImageSchema = new mongoose.Schema({
 	url: String,
 
+	/*
+	urls: {
+		original: String,
+		archive: String,
+		most_recent: String,
+		people: String
+	}
+	*/
+
 	most_recent: {
 		x: Number,
 		y: Number,
