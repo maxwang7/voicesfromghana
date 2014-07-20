@@ -7,16 +7,12 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var ImageSchema = new mongoose.Schema({
-	url: String,
-
-	/*
-	urls: {
+	names: {
 		original: String,
 		archive: String,
 		most_recent: String,
-		people: String
+		people: String,
 	}
-	*/
 
 	most_recent: {
 		x: Number,
