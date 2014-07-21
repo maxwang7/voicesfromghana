@@ -12,7 +12,7 @@ var ImageSchema = new mongoose.Schema({
 		archive: String,
 		most_recent: String,
 		people: String,
-	}
+	},
 
 	most_recent: {
 		x: Number,
