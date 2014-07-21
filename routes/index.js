@@ -26,38 +26,13 @@ module.exports = function(app) {
 	// For Christine
 	app.get('/admin/dashboard', adminHandlers.dashboard);
 
-	app.get('/admin/blog/create', adminHandlers.blogCreateGET);
+	app.all('/admin/blog/:id?', adminHandlers.blog_post);
 
-	app.post('/admin/blog/create', adminHandlers.blogCreatePOST);
+	app.all('/admin/media/:id?', adminHandlers.media);
 
-	app.get('/admin/blog/get/:id', adminHandlers.blogGet);
+	app.get('/admin/crop/:img_id/:post_id/:index', adminHandlers.crop_page);
 
-	app.get('/admin/blog/get/json/:id', adminHandlers.blogGetJSON);
-
-	app.post('/admin/blog/update/:id', adminHandlers.blogUpdate);
-
-	app.post('/admin/blog/delete/:id', adminHandlers.blogDelete);
-
-	// media handlers
-	/*
-	app.post('/admin/image/create', imageHandlers.create);
-
-	app.get('/admin/image/get/:id', imageHandlers.get);
-
-	app.post('/admin/image/update/:id', imageHandlers.update);
-
-	app.post('/admin/image/delete/:id', imageHandlers.delete);
-
-	app.post('/admin/image/crop/:id', imageHandlers.crop);
-	*/
-
-	app.get('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaGET);
-
-	app.post('/admin/blog/addMedia/:id', adminHandlers.blogAddMediaPOST);
-
-	app.post('/admin/blog/addImagePreviewPOST/:id', adminHandlers.blogAddImagePreviewPOST);
-
-	app.get('/admin/blog/getMedia/:id', adminHandlers.blogGetMedia);
+	app.get('/admin/crop/:id', adminHandlers.crop);
 
 	// robot.txt
 	app.get('/robots.txt', defaultHandlers.robots);
