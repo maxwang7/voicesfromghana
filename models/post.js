@@ -8,28 +8,27 @@ var mongoose = require('mongoose'),
 
 var PostSchema = new mongoose.Schema({
  	info: {
- 		title: String,
- 		description: String,
- 		text: String,
- 		tags: [String],
- 		location: String
+ 		title: { type : String, default : '' },
+ 		description: { type : String, default : '' },
+ 		text: { type : String, default : '' },
+ 		tags: { type : Array, default : [] },
+ 		location: { type : String, default : '' }
  	},
 
- 	isProfile: Boolean,
+ 	isProfile: { type : Boolean, default : false },
 
  	media: {
- 		audio: [{ type : Schema.Types.ObjectId, ref : 'Audio' }],
- 		image: [{ type : Schema.Types.ObjectId, ref : 'Image' }],
- 		video: [{ type : Schema.Types.ObjectId, ref : 'Video' }],
- 		primary_image: Number // The primary image is the index of the image that will appear in the preview,
+ 		audio: [{ type : Schema.Types.ObjectId, default : [], ref : 'Audio' }],
+ 		image: [{ type : Schema.Types.ObjectId, default : [], ref : 'Image' }],
+ 		video: [{ type : Schema.Types.ObjectId, default : [], ref : 'Video' }],
+ 		primary_image: { type : Number, default : -1, min : -1} // The primary image is the index of the image that will appear in the preview,
  		// set to -1 if there isn't one set yet
+ 		// TODO: Set a maximum value for the primary_image that's dependent on the length of the image
 	},
-
-	tags: [{ type : String }],
 
 	timestamp: {type: Date, default: Date.now()},
 
-	num_views: {type: Number, default: 0}
+	num_views: {type: Number, default: 0, min : 0}
 });
 
 // Returns a boolean, indicating whether the instance can be displayed

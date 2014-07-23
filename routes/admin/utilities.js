@@ -3,7 +3,7 @@ var fs = require('fs'),
 
 exports.process_tags = function(str) {
 	// Need to finish implementation!
-	return str;
+	return [str];
 };
 
 exports.contains_media = function(text) {
