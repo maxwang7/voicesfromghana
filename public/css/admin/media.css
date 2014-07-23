@@ -17,3 +17,7 @@ html, body {
 #voices-admin-media-modal-content {
 	text-align: center;
 }
+
+	.voices-admin-media-image {
+		width: 300px;
+	}

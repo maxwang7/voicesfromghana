@@ -1,3 +1,4 @@
+var Post = require('../models/post.js'),
 	Img = require('../models/image.js');
 	// Audio = require('../models/audio.js'),
 	// Video = require('../models/video.js');

@@ -7,26 +7,18 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var ImageSchema = new mongoose.Schema({
-	names: {
-		original: String,
-		archive: String,
-		most_recent: String,
-		people: String,
+	urls: {
+		original: { type : String, default : '' },
+		archive: { type : String, default : '' },
+		most_recent: { type : String, default : '' },
+		people: { type : String, default : '' },
 	},
 
-	most_recent: {
-		x: Number,
-		y: Number,
-		height: Number,
-		width: Number
-	},
+	name : { type : String, default : '' },
 
-	archive: {
-		x: Number,
-		y: Number,
-		height: Number,
-		width: Number
-	},
+	tags : { type : Array, default : [] },
+
+	caption : { type : String, default : '' },
 
 	timestamp: {type: Date, default: Date.now()}
 });

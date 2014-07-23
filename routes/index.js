@@ -28,9 +28,9 @@ module.exports = function(app) {
 
 	app.all('/admin/blog/:id?', adminHandlers.blog_post);
 
-	app.all('/admin/media/:id?', adminHandlers.media);
+	app.all('/admin/media/:post_id?', adminHandlers.media);
 
-	app.get('/admin/crop/:img_id/:post_id/:index', adminHandlers.crop_page);
+	app.get('/admin/crop/:post_id/:index', adminHandlers.crop_page);
 
 	app.get('/admin/crop/:id', adminHandlers.crop);
 

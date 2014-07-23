@@ -1,17 +1,13 @@
 var utilities = require('./utilities'),
 	status = require('http-status-codes'),
-	Post = require('../../models/post');
+	Post = require('../../models/post'),
+	Image = require('../../models/image'),
+	Audio = require('../../models/audio'),
+	Video = require('../../models/video');
 
 var id,
 	params,
 	body;
-
-var empty_media = {
-	audio : [],
-	image : [],
-	video : [],
-	primary_image : -1
-};
 
 // Returns a JS object containing all the information
 // for a post's info field, provided the body property of the
@@ -60,22 +56,58 @@ exports.GET = function(req, res) {
 exports.POST = function(req, res) {
 	var redirect_path = '/admin/media/';
 
+	// Counts the number of times the search_str appears
+	// in the text
+	function count(text, search_str) {
+		return text.split(search_str).length - 1;
+	}
+
+	var text = body.text;
+	var num_images = count(text, '##image##'),
+		num_audios = count(text, '##audio##'),
+		num_videos = count(text, '##video##');
+
+	var is_profile = req.body.isProfile === 'on';
+
 	if(id) { // req.params.id exists, updating an existing post
 		Post.findById(id, function(err, post) {
 			if(err) {
 				res.send(status.INTERNAL_SERVER_ERROR);
 			}
 			post.info = create_post_info(body);
-			post.save();
+			post.isProfile = is_profile;
+			post.save(function(err, product, numAffected) {
+				if(err) {
+					res.send(status.INTERNAL_SERVER_ERROR);
+				}
+			});
 			res.redirect(redirect_path + post._id);
 		});
 	} else { // req.params.id is not defined, creating a new post
 		var post = new Post({
 			info : create_post_info(body),
-			isProfile : body.isProfile,
-			media : empty_media,
-			tags : []
+			isProfile : is_profile
 		});
+
+		// Create empty images and push into image array
+		// Do similar with audios and videos
+		// TODO: Is there a better way to do this?
+		for(var m = 0; m < num_images; m++) {
+			var image = new Image();
+			post.media.image.push(image._id);
+			image.save();
+		}
+		for(var m = 0; m < num_audios; m++) {
+			var audio = new Audio();
+			post.media.audio.push(audio._id);
+			audio.save();
+		}
+		for(var m = 0; m < num_videos; m++) {
+			var video = new Video();
+			post.media.video.push(video._id);
+			video.save();
+		}
+
 		post.save();
 		res.redirect(redirect_path + post._id);
 	}

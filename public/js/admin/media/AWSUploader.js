@@ -1,8 +1,7 @@
-function AWSUploader(bucket_, access_key_id_, secret_access_key_, bucket_url_) {
+function AWSUploader(bucket_, access_key_id_, secret_access_key_) {
 	var bucket = bucket_,
 		access_key_id = access_key_id_,
-		secret_access_key = secret_access_key_,
-		bucket_url = bucket_url_
+		secret_access_key = secret_access_key_;
 
 	// configure
 	AWS.config.update({
@@ -34,8 +33,6 @@ function AWSUploader(bucket_, access_key_id_, secret_access_key_, bucket_url_) {
 				callback(err, data)
 
 			})
-		},
-
-		bucket_url: bucket_url
+		}
 	}
 }

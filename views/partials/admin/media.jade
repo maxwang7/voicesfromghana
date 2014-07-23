@@ -1,127 +1,84 @@
 extends ../../template
 
 block head
-	title Admin: Media Upload
 	include admin_header
-	link(rel='stylesheet' href='/css/admin/media.css')
 
 block content
 	.container
-		.col-xs-3
-		.col-xs-6
-			h1 Media Upload
-			.form-group.well#voices-admin-media-container
-				input#voices-admin-media-num-images(type='hidden' value=num_images)
-				input#voices-admin-media-post-id(type='hidden' value=post._id)
-		.col-xs-3
-
-	script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.5.min.js")
-	script(src='/js/admin/media/AWSUploader.js')
-	script(src='/js/admin/media/ImageCropper.js')
-	script(src='/js/admin/media/PreviewHandler.js')
-	script(src='/js/admin/media/Queue.js')
-	script(src='/js/admin/media/Uploader.js')
-	script.
-		var $container = $('#voices-admin-media-container')
-		var num_images = $('#voices-admin-media-num-images').val()
-		var post_id = $('#voices-admin-media-post-id').val()
-
-		var queue = Queue()
-		var aws = AWSUploader('voices-from-ghana-test', 'AKIAJGSNN2L5MQLAT2MA', 'u12av9CFJSYOf9VYqQ9DnzYMjHe8ZqQVPyr66mWl', 'https://s3-us-west-2.amazonaws.com/voices-from-ghana-test/')
-		var previewer = PreviewHandler()
-
-		var post
-		$.ajax({
-
-			url: '/admin/blog/get/json/' + post_id,
-			dataType: 'json'
-
-		}).success(function(data, textStatus, jqXHR) {
-
-			console.log('Success!')
-			console.log(data)
-
-			post = data
-
-			for(var m = 0; m < num_images; m++) {
-				var uploader = Uploader($container, 'image', '<p class="help-block">Select image #' + (m+1) + '. This was your story: </p><p>' + post.info.text + "</p>", aws, post_id)
-				queue.append(uploader)
-			}
-
-			var every_callback = function(image) {
-				previewer.register_image(image)
-			}
-
-			var complete_callback = function() {
-				previewer.run($container[0], function(container_, help_block_, selected_image_, selected_image_index_) {
-					var $container = $(container_),
-						$help_block = $(help_block_)
-						$selected_image = $(selected_image_)
-
-					$selected_image.show()
-							.width('100%')
-							.appendTo($container)
-					$help_block.html('Crop the image for the most recent preview display.')
-
-					// Handlers
-					var cropper = ImageCropper()
-					var most_recent_ratio = 0.7632,
-						archive_ratio = 0.7486,
-						post_url = '/admin/blog/addImagePreviewPOST/' + post_id
-
-
-					var $save_btn_container = $('<div></div>').appendTo($container)
-
-					most_recent_crop_handler = function(dimensions) {
-						// data to be sent to the backend
-						var data = {
-							selected_image_url: $selected_image.attr('src'),
-							selected_image_index : selected_image_index_,
-							post_id : post_id
-						}
-						// Save dimension in data to send later
-						data.most_recent = dimensions
-						
-						// Call next crop function
-						var archive_crop_handler = function(dimensions) {
-							// Save dimensions to data objects
-							data.archive = dimensions
-							// success handler
-							var success_handler,
-								err_handler
-
-							// Send data to server
-							var send_data = function() {
-								$.ajax({
-									type: 'POST',
-									url: post_url,
-									data: data,
-									success: success_handler,
-									error: err_handler
-								})
-							}
-
-							success_handler = function() {
-								window.location.replace('/admin/dashboard')
-							}
-
-							err_handler = function() {
-								send_data()
-							}
-
-							send_data()
-						}
-
-						cropper.crop($selected_image[0], archive_ratio, $container, $save_btn_container[0], archive_crop_handler)
+		.row
+			.form-group
+				label.col-xs-2 Title of blog post
+				.col-xs-10= post.info.title
+		.row
+			.form-group
+				label.col-xs-2 Text in blog post
+				.col-xs-10= post.info.text
+		.row
+			//- TODO: Don't need post id anymore, remove here, in JS, and in Uploader.js
+			input.hidden#voices-admin-media-post-id(value=post._id)
+		.row
+			.form-group
+				label.col-xs-2 Preview Image
+				.col-xs-10
+					input.form-control#voices-admin-media-primary-image-input(type="number")
+					button.btn.btn-default#voices-admin-media-primary-image-button(type="button" href="/admin/crop/") Submit
+					p.help-block Select the photo number you would like to be displayed on the home page. When you hit submit, you will be taken to a page to crop the image you\'ve chosen. You can still come back to this page.
+		.row
+			each image in post.media.image
+				.col-xs-4
+					if image.urls.original === ''
+						img.voices-admin-media-image(src='/images/admin/media-upload.png')
+					else
+						img.voices-admin-media-image(src=image.urls.original alt='Image from blog post')
+					//- TODO: Only allow image files to be uploaded
+					input.hidden.voices-admin-media-image-id(value=image._id)
+					input.voices-admin-media-image-file-chooser(type='file' accept='image/*')
+					button.voices-admin-media-image-submit(type='button') Upload
+					p.help-block.voices-admin-media-image-help-block
+		script.
+			// Takes user to image crop
+			(function() {
+				var post_id = $('#voices-admin-media-post-id').val();
+				var $input = $('#voices-admin-media-primary-image-input'),
+					$btn = $('#voices-admin-media-primary-image-button');
+				$btn.attr('disabled');
+				$btn.click(function(e) {
+					// TODO error handling
+					// must be a number
+					// number must be greater than zero and 
+					// less than the number of images
+					var val = $input.val();
+					function is_number(num) {
+						return !isNaN(num);
 					}
-
-					cropper.crop($selected_image[0], most_recent_ratio, $container, $save_btn_container[0], most_recent_crop_handler)
-
-				})
-			}
-
-			queue.execute(every_callback, complete_callback)
-
-		})
-
-		
+					if(is_number(val)) {
+						var href = $btn.attr("href")  + post_id + '/' + val;
+						window.location.href = href;
+					}
+				});
+			})();
+		script(src="https://sdk.amazonaws.com/js/aws-sdk-2.0.8.min.js")
+		script(src='/js/admin/media/AWSUploader.js')
+		script(src='/js/admin/media/Uploader.js')
+		script.
+			(function() {
+				// Handles all media uploads
+				var aws = AWSUploader('voices-from-ghana-test', 'AKIAJGSNN2L5MQLAT2MA', 'u12av9CFJSYOf9VYqQ9DnzYMjHe8ZqQVPyr66mWl');
+				var uploader = Uploader(aws);
+				var $image_ids = $('.hidden.voices-admin-media-image-id'),
+					$image = $('.voices-admin-media-image'),
+					$file_choosers = $('.voices-admin-media-image-file-chooser'),
+					$buttons = $('.voices-admin-media-image-submit'),
+					$helps = $('.voices-admin-media-image-help-block'),
+					post_id = $('#voices-admin-media-post-id').val();
+				for(var m = 0; m < $file_choosers.length; m++) {
+					uploader.register(post_id, $($image_ids[m]).val(), $file_choosers[m], $buttons[m], $helps[m], $image[m], show_media);
+				}
+				function show_media(media, url) {
+					$media = $(media);
+					// TODO allow handling for video and audio
+					$media.attr('src', url)
+				}
+				
+				// TODO handle other media types
+			})();
