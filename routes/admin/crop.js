@@ -58,7 +58,7 @@ exports.POST = function(req, res) {
         dim = req.body.dim;
 
     // TODO: change at production time
-    var bucket_name = 'voices-from-ghana-test',
+    var bucket_name = 'voices-from-ghana',
         key;
 
     Post.findById(post_id, function(err, post) {
@@ -113,7 +113,7 @@ exports.POST = function(req, res) {
 
                     aws.write(bucket_name, file_name, function(key) {
 
-                        image.urls[type] = 'https://s3-us-west-2.amazonaws.com/voices-from-ghana-test/' + key;
+                        image.urls[type] = 'https://s3-us-west-2.amazonaws.com/voices-from-ghana/' + key;
 
                         // TODO: Should use Promises for these two
                         image.save(function(err, product, numAffected) {
