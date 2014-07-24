@@ -11,13 +11,13 @@ var gm = require('gm'),
 // Saves the new image file to the file system,
 // and calls a callback with the new image file's name as
 // the parameter.
-exports.crop = function(image_file, crop_dim, final_dim, callback) {
+exports.crop = function(image_file, extension, crop_dim, final_dim, callback) {
 	// Make sure to get a unique name based on the time
-	var new_name = Date.now() + '';
+	var new_name = Date.now() + extension;
 	var get_name = function() {
 		fs.exists(new_name, function(exists) {
 			if(exists) {
-				new_name += '0';
+				new_name = '0' + new_name;
 				get_name();
 			}
 		});
@@ -37,8 +37,8 @@ exports.crop = function(image_file, crop_dim, final_dim, callback) {
 			}
 			width = value.width * crop_dim.width;
 			height = value.height * crop_dim.height;
-			x = value.width * crop_dim.width;
-			y = value.height * crop_dim.height;
+			x = value.width * crop_dim.x;
+			y = value.height * crop_dim.y;
 			this.crop(width, height, x, y)
 				.resize(final_dim.width, final_dim.height)
 				.write(new_name, function(err, stdout, stderr, command) {

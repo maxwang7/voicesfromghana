@@ -14,14 +14,11 @@ block content
 				label.col-xs-2 Text in blog post
 				.col-xs-10= post.info.text
 		.row
-			//- TODO: Don't need post id anymore, remove here, in JS, and in Uploader.js
-			input.hidden#voices-admin-media-post-id(value=post._id)
-		.row
 			.form-group
 				label.col-xs-2 Preview Image
 				.col-xs-10
-					input.form-control#voices-admin-media-primary-image-input(type="number")
-					button.btn.btn-default#voices-admin-media-primary-image-button(type="button" href="/admin/crop/") Submit
+					input.form-control#voices-admin-media-primary-image-input(type="number" value=(post.media.primary_image + 1))
+					button.btn.btn-default#voices-admin-media-primary-image-button(type="button" href="/admin/crop/" + post._id + '/') Submit
 					p.help-block Select the photo number you would like to be displayed on the home page. When you hit submit, you will be taken to a page to crop the image you\'ve chosen. You can still come back to this page.
 		.row
 			each image in post.media.image
@@ -38,7 +35,6 @@ block content
 		script.
 			// Takes user to image crop
 			(function() {
-				var post_id = $('#voices-admin-media-post-id').val();
 				var $input = $('#voices-admin-media-primary-image-input'),
 					$btn = $('#voices-admin-media-primary-image-button');
 				$btn.attr('disabled');
@@ -52,7 +48,8 @@ block content
 						return !isNaN(num);
 					}
 					if(is_number(val)) {
-						var href = $btn.attr("href")  + post_id + '/' + val;
+						var zero_indexed = Number(val) - 1;
+						var href = $btn.attr("href") + zero_indexed;
 						window.location.href = href;
 					}
 				});
@@ -72,7 +69,8 @@ block content
 					$helps = $('.voices-admin-media-image-help-block'),
 					post_id = $('#voices-admin-media-post-id').val();
 				for(var m = 0; m < $file_choosers.length; m++) {
-					uploader.register(post_id, $($image_ids[m]).val(), $file_choosers[m], $buttons[m], $helps[m], $image[m], show_media);
+					var media_id = $($image_ids[m]).val();
+					uploader.register(media_id, $file_choosers[m], $buttons[m], $helps[m], $image[m], show_media);
 				}
 				function show_media(media, url) {
 					$media = $(media);

@@ -11,6 +11,7 @@ body {
 
 .voices-audience-site-container-outside {
 	width: 1285px;
+	min-height: 768px;
 
 	background-image: url('/images/audience/site-border.png');
 	background-repeat: no-repeat;

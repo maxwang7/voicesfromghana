@@ -11,6 +11,6 @@ block content
 			.row
 				h1 Tell the world your story!
 			.row
-				- var placeholders = {title: 'The Dippy Donkey goes to Ghana', description: 'omg I just said smuggle to combine smirk and giggle!', story: 'Hope you\'re doing well. I can\'t wait to hear about what you\'re experiencing, what you\'ve learned, and how you\'ve grown. The world\'s listening, speak up :\) Love, -Max', tags: '#skypingwithdippy, #anagram', location: 'Accra, Ghana'};
-				+post_form('/admin/blog/', placeholders, post)		
+				- var placeholders = {title: 'The Dippy Donkey goes to Ghana', description: 'omg I just said smuggle to combine smirk and giggle!', text: 'Hope you\'re doing well. I can\'t wait to hear about what you\'re experiencing, what you\'ve learned, and how you\'ve grown. The world\'s listening, speak up :\) Love, -Max', tags: '#skypingwithdippy, #anagram', location: 'Accra, Ghana'};
+				+post_form('/admin/blog/' + post._id, placeholders, post)
 		.col-xs-2

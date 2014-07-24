@@ -1,0 +1,76 @@
+/* Prefix: voices-audience-people- */
+
+.voices-audience-people-container {
+    margin-top: 15px;
+    background-color: #F8F8F8;
+    text-align: left;
+}
+
+    .voices-audience-people-top-placeholder {
+        height: 75px;
+    }
+
+    .voices-audience-people-note {
+        /*margin-right: -225px;*/
+        width: 270px;
+        max-height: 360px;
+        margin: 25px 0 0 10px;
+        float: left;
+        border: 1px solid #dddddd;
+
+        /*transform:rotate(-2deg);*/
+        /*-ms-transform:rotate(-2deg); /* IE 9 */*/
+        /*-webkit-transform:rotate(-2deg); /* Opera, Chrome, and Safari */*/
+
+        /*-webkit-box-shadow: -5px 10px 0px 5px rgba(51,51,51,0.75);
+        -moz-box-shadow: -5px 10px 0px 5px rgba(51,51,51,0.75);
+        box-shadow: -5px 10px 0px 5px rgba(51,51,51,0.75);*/
+    }
+
+    .voices-audience-people-photo-container-outer {
+        padding: 25px;
+        width: 270px;
+        height: 360px;
+
+        display: inline-block;
+        text-align: center;
+    }
+
+        .voices-audience-people-photo-container-inner {
+
+            width: 270px;
+            height: 360px;
+            display: absolute;
+
+            overflow: hidden;
+        }
+
+            .voices-audience-people-photo {
+                width: 270px;
+                height: 270px;
+
+                position: relative;
+                z-index: 0;
+
+            }
+
+            .voices-audience-people-blurb {
+
+                width: 100%;
+
+                margin-top: -6px;
+                overflow: hidden;
+                color: white;
+
+                position: relative;
+                z-index: 999;
+
+                background-color: #e77d2b;
+            }
+
+                .voices-audience-people-blurb-name {
+                    padding-top: 1em;
+
+                    font-weight: bolder;
+                    font-family: avenir;
+                }

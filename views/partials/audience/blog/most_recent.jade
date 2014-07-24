@@ -1,7 +1,7 @@
 .voices-audience-blog-recent-container
 	- var most_recent = posts[0]
 	.voices-audience-blog-recent-image-container
-		img#voices-audience-blog-recent-image(src=most_recent.media.image[most_recent.media.primary_image].url alt='Image from blog post')
+		img#voices-audience-blog-recent-image(src=most_recent.media.image[most_recent.media.primary_image].urls.most_recent alt='Image from blog post')
 	.voices-audience-blog-recent-sneakpeak-container
 		.voices-audience-blog-recent-sneakpeak-date= months[most_recent.timestamp.getMonth()] + ' ' + most_recent.timestamp.getDate()
 		.voices-audience-blog-recent-sneakpeak-title= most_recent.info.title

@@ -8,7 +8,7 @@ each post, index in posts
 					.voices-audience-blog-archive-col-1-date-row-2= post.timestamp.getDate()
 			.voices-audience-blog-archive-col-2
 				.voices-audience-blog-archive-col-2-image-container
-					img#voices-audience-blog-archive-col-2-image(src=post.media.image[post.media.primary_image].url alt='Companion image')
+					img#voices-audience-blog-archive-col-2-image(src=post.media.image[post.media.primary_image].urls.archive alt='Companion image')
 			.voices-audience-blog-archive-col-3
 				.voices-audience-blog-archive-col-3-container
 					.voices-audience-blog-archive-col-3-title= post.info.title

@@ -12,7 +12,20 @@ exports.blog = function(req, res) {
 		.exec(function(err, posts) {
 			if(err) console.log(err);
 			if(err) next(err);
-			res.render('audience/blog/blog', {posts: posts, current_page: 'home'});
+			var filtered_posts = [];
+			posts.forEach(function(element, index, arr) {
+				try {
+					var primary_image = element.media.primary_image;
+					var urls = element.media.image[primary_image].urls;
+					if(urls.original && urls.most_recent && urls.archive) {
+						filtered_posts.push(element);
+					}
+				} catch (err) {
+					console.log(err);
+				}
+			})
+
+			res.render('audience/blog/blog', {posts: filtered_posts, current_page: 'home'});
 		});
 };
 
@@ -27,6 +40,9 @@ exports.post = function(req, res) {
 		//.populate('media.audio')
 		//.populate('media.video')
 		.exec(function(err, post) {
+			if(err) {
+				res.send(500);
+			}
 			post.info.text = utilities.processText(post);
 			res.render('audience/blog_post/blog_post', {post: post});
 		});
@@ -34,4 +50,17 @@ exports.post = function(req, res) {
 
 exports.thanks = function(req, res) {
 	res.render('audience/thanks/thanks');
+};
+
+exports.people = function(req, res) {
+	Post
+		.find({ isProfile : true })
+		.populate('media.image')
+		.exec(function(err, posts) {
+			if(err) {
+				res.send(500);
+			}
+			console.log(posts);
+			res.render('audience/people/people', { posts : posts });
+		})
 };

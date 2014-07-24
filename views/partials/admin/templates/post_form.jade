@@ -1,10 +1,10 @@
 mixin post_form(post_url, placeholders, post)
-    form.form-horizontal(action=""+post_url method='post')
+    form.form-horizontal(action=post_url method='post')
         include bootstrap-form-field
         - var post = post ? post : {info: {title: '', description : '', text: '', tags: '', location: ''}, media: {photo: [], audio: [], video: []}};
         +form_field('Title', 'col-xs-6', 'text', post.info.title, placeholders.title, '')
         +form_field('Description', 'col-xs-10', 'text', post.info.description, placeholders.description, '')
-        +form_field('Text', 'col-xs-10', 'textarea', post.info.story, placeholders.story, '15')
+        +form_field('Text', 'col-xs-10', 'textarea', post.info.text, placeholders.text, '15')
         .form-group
             label.col-xs-2.control-label Media tags:
             .col-xs-3
@@ -21,8 +21,7 @@ mixin post_form(post_url, placeholders, post)
         +form_field('Location', 'col-xs-10', 'text', post.info.location, placeholders.location, '')
         input(type='hidden' id='voices-image0-url' name='image0' value='')
         .form-group
-            .col-xs-5.control-label
-                .checkbox
-                    label
-                        <input type='checkbox' name='isProfile'> This blog post is a profile
+            label.col-xs-2.control-label This blog post is a profile
+            .col-xs-2
+                input.checkbox(type='checkbox' name='isProfile' checked=(post.isProfile ? 'checked' : ''))
         +form_field('', '', 'submit', '', '', '')

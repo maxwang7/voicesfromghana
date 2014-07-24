@@ -1,0 +1,6 @@
+/* Prefix: voices-admin-crop- */
+
+.voices-admin-crop-original-image {
+    max-width: 720px;
+    max-height: 500px;
+}

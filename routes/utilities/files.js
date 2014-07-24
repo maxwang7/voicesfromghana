@@ -25,9 +25,9 @@ exports.clearAll = function() {
 	files.forEach(function(element, index, arr) {
 		fs.unlink(element, function(err) {
 			if(err) {
-				throw err;
+				console.log(err);
 			}
-			arr_remove(created_files, index);
+			arr_remove(files, index);
 		});
 	});
 };

@@ -1,0 +1,67 @@
+extends ../../template
+
+block head
+    include admin_header
+
+block content
+    .container
+        .row
+            h1= post.info.title
+            h2= 'Image #: ' + (Number(index) + 1)
+        .row
+            input.hidden#voices-admin-crop-post-id(value=post._id)
+            input.hidden#voices-admin-crop-image-index(value=index)
+            h3 Original image:
+            if image.urls.original
+                //- If image has been uploaded
+                img.voices-admin-crop-original-image(src=image.urls.original alt='Image to crop')
+                p.help-block#voices-admin-crop-help
+                button.btn.btn-default#voices-admin-crop-most_recent-cropper(type='button') Most Recent
+                button.btn.btn-default#voices-admin-crop-archive-cropper(type='button') Archive
+                if post.isProfile
+                    button.btn.btn-default#voices-admin-crop-archive-people(type='button') People
+                //- TODO: If it is a profile, add a button for a person -- also add something into the script
+            else
+                //- If no image has been uploaded yet
+                .error Please upload an image first!
+        //- most recent
+        .row
+            h3 Most Recent
+            if image.urls.most_recent
+                img.voices-admin-crop-most_recent(src=image.urls.most_recent alt='Most recent image')
+            else
+                .error Please crop this image for it to be displayed!
+        //- archive
+        .row
+            h3 Archive
+            if image.urls.archive
+                img.voices-admin-crop-archive(src=image.urls.archive alt='Archive image')
+            else
+                .error Please crop this image for it to be displayed!
+        //- person, if isProfile is checked
+        if post.isProfile
+            .row
+                h3 People
+                if image.urls.people
+                    img.voices-admin-crop-people(src=image.urls.people alt='People image')
+                else
+                    .error Please crop this image for it to be displayed!
+        script(src='/js/admin/media/Cropper.js')
+        script.
+            var $image = $('.voices-admin-crop-original-image'),
+                $help = $('#voices-admin-crop-help'),
+                $most_recent_button = $('#voices-admin-crop-most_recent-cropper'),
+                $archive_button = $('#voices-admin-crop-archive-cropper'),
+                $people_button = $('#voices-admin-crop-archive-people'),
+                post_id = $('#voices-admin-crop-post-id').val(),
+                index = $('#voices-admin-crop-image-index').val(),
+                // TODO: Update ratios -- see gitHub repo
+                most_recent_ratio = 0.7632,
+                archive_ratio = 0.7486,
+                people_ratio = 1;
+            console.log(index);
+            var cropper = Cropper($image[0], $help[0], post_id, index);
+            cropper.register($most_recent_button[0], most_recent_ratio);
+            cropper.register($archive_button[0], archive_ratio);
+            cropper.register($people_button[0], people_ratio);
+            cropper.start();
