@@ -28,43 +28,4 @@ function PersonBox(container, image, blurb) {
 	};
 
 	this.container.hover(hide, show);
-	//this.container.mouseenter(hide);
-	//this.container.mouseleave(show);
 }
-
-
-// function Person(image, bio) {
-// 	console.log(image);
-// 	console.log(bio);
-// 	if(typeof(image) !== "object") console.log('Error, image not object');
-// 	if(typeof(bio) !== "object") console.log('Error, bio not object');
-
-
-
-
-// 	// var image_interact = new Interact(image); // should use the container, not the image
-
-// 	// var mouse_inside = false;
-
-// 	// var hide = function() {
-// 	// 	console.log("hide");
-// 	// 	if(image_interact.is_inside() && image.offset().top < bio.offset().top) {
-// 	// 		bio.animate({
-// 	// 			"marginTop" : "-=8",
-// 	// 			"height" : "+=8"
-// 	// 		}, 7);
-// 	// 	}
-// 	// };
-
-// 	// var show = function() {
-// 	// 	console.log("show");
-// 	// 	if(!image_interact.is_inside() && image.offset().top + image.height() - 5 > bio.offset().top) {
-// 	// 		bio.animate({
-// 	// 			"marginTop" : "+=5",
-// 	// 			"height" : "-=5"
-// 	// 		}, 7);
-// 	// 	}
-// 	// };
-
-// 	// setInterval(function() {hide(); show();}, 15);
-// }

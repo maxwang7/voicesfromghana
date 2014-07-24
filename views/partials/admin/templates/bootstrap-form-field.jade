@@ -8,6 +8,6 @@ mixin form_field(name, width, type, value, placeholder, rows)
             label.col-xs-2.control-label= name
             div(class=width id=attributes.id)
                 if type === 'textarea'
-                    textarea.form-control(rows=""+rows name=""+name.toLowerCase() placeholder=""+placeholder)
+                    textarea.form-control(rows=rows name=name.toLowerCase() placeholder=placeholder)= value
                 else
-                    input.form-control(type=""+type name=""+name.toLowerCase() value=""+value placeholder=""+placeholder)
+                    input.form-control(type=type name=name.toLowerCase() value=value placeholder=placeholder)

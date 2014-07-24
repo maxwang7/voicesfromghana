@@ -23,16 +23,18 @@ module.exports = function(app) {
 
 	app.get('/thanks', pageHandlers.thanks);
 
+	app.get('/people', pageHandlers.people);
+
 	// For Christine
 	app.get('/admin/dashboard', adminHandlers.dashboard);
 
 	app.all('/admin/blog/:id?', adminHandlers.blog_post);
 
-	app.all('/admin/media/:post_id?', adminHandlers.media);
+	app.all('/admin/media/:id?', adminHandlers.media);
 
-	app.get('/admin/crop/:post_id/:index', adminHandlers.crop_page);
+	app.all('/admin/crop/:id/:index', adminHandlers.crop);
 
-	app.get('/admin/crop/:id', adminHandlers.crop);
+	app.post('/admin/blog/delete/:id', adminHandlers.blog_delete);
 
 	// robot.txt
 	app.get('/robots.txt', defaultHandlers.robots);

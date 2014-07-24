@@ -4,6 +4,10 @@ var Post = require('../models/post.js'),
 	// Video = require('../models/video.js');
 var utilities = require('./admin/utilities');
 
+// TODO: Selecting the verb/method type can totally be done using
+// some JS metaprogramming, encapsulating each handler in
+// a JS object property
+
 
 // Renders the main dashboard page with all of the posts
 exports.dashboard = function(req, res) {
@@ -43,19 +47,28 @@ exports.media = function(req, res) {
 	}
 };
 
-//// Renders the crop page
-//// req.params.img_id is the id of the image,
-// and must be defined
-//// req.params.post_id is the id of the post,
-// and must be defined
-//// req.params.index is the index of the image
-// in the post array.
-exports.crop_page = function(req, res) {
 
+exports.crop = function(req, res) {
+	var crop = require('./admin/crop');
+
+	var method = req.method;
+	if(method === 'GET') {
+		crop.GET(req, res);
+	} else if(method === 'POST') {
+		crop.POST(req, res);
+	} else {
+		crop.NO_VERB(req, res);
+	}
 };
 
-//// Used to crop an image
-//// req.params.id is the id of the image 
-exports.crop = function(req, res) {
 
+exports.blog_delete = function(req, res) {
+	var blog_delete = require('./admin/blog_delete');
+
+	var method = req.method;
+	if(method === 'POST') {
+		blog_delete.POST(req, res);
+	} else {
+		blog_delete.NO_VERB(req, res);
+	}
 };

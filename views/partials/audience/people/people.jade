@@ -1,0 +1,40 @@
+extends ../site_container
+
+block header
+    link(rel='stylesheet' href='/css/audience/people/people.css')
+    script(src='/js/person-box.js')
+
+block contenter
+    .voices-audience-people-container
+        .voices-audience-people-top-placeholder
+        .voices-audience-people-photo-container-outer
+            img(src='/images/audience/people/note.jpg' alt='Christine\'s handwritten note').voices-audience-people-note
+        each person in posts
+            .voices-audience-people-photo-container-outer
+                .voices-audience-people-photo-container-inner
+                    - var index = person.media.primary_image
+                    img(src=person.media.image[index].urls.people alt='Image of person').voices-audience-people-photo
+                    .voices-audience-people-blurb
+                        .voices-audience-people-blurb-name Title
+                        p more wordss, WORDS!
+            //- .voices-audience-people-photo-container-outer
+            //-     .voices-audience-people-photo-container-inner
+            //-         img(src='' alt='Image of person').voices-audience-people-photo
+            //-         .voices-audience-people-blurb
+            //-             .voices-audience-people-blurb-name Title
+            //-             p more wordss, WORDS!
+            //- .voices-audience-people-photo-container-outer
+            //-     .voices-audience-people-photo-container-inner
+            //-         img(src='' alt='Image of person').voices-audience-people-photo
+            //-         .voices-audience-people-blurb
+            //-             .voices-audience-people-blurb-name Title
+            //-             p more wordss, WORDS!
+        script.
+            (function() {
+                var $containers = $('.voices-audience-people-photo-container-inner'),
+                    $blurbs = $('.voices-audience-people-blurb'),
+                    $images = $('.voices-audience-people-photo');
+                for(var m = 0; m < $images.length; m++) {
+                    var person = new PersonBox($containers[m], $images[m], $blurbs[m]);
+                }
+            })();

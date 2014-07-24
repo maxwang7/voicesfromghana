@@ -2,11 +2,9 @@
 // sends the name of the file to the server.
 function Uploader(aws) {
 	return {
-		// TODO: don't need post_id any more. Remove from jade template as well
 		// TODO: too many params, handle better?
-		register: function register(post_id_, media_id_, file_chooser_, btn_, help_block_, media, callback) {
-			var post_id = post_id_,
-				media_id = media_id_,
+		register: function register(media_id_, file_chooser_, btn_, help_block_, media, callback) {
+			var media_id = media_id_,
 				$file_chooser = $(file_chooser_),
 				$btn = $(btn_),
 				$help = $(help_block_),
@@ -69,7 +67,6 @@ function Uploader(aws) {
 						if(file_type === 'image') {
 							var url_prefix = 'https://s3-us-west-2.amazonaws.com/voices-from-ghana-test/';
 							var data = {
-								media_id : media_id,
 								type : file_type,
 								media : {
 									urls : {
@@ -90,7 +87,7 @@ function Uploader(aws) {
 								}
 								$.ajax({
 									type : 'POST',
-									url : '/admin/media/' + post_id,
+									url : '/admin/media/' + media_id,
 									data : data,
 									success : function() {
 										$help.html('Fin! Upload again if you want to make changes.');

@@ -17,8 +17,9 @@ exports.processText = function(post) {
 	function insertMedia(text_str, post) {
 		var image_count = 0;
 		return text_str.replace('##image##', function(match) {
-			return '<img src="' + post.media.image[image_count].url + '" alt="No image found" />';
+			var str = '<img src="' + post.media.image[image_count].urls.original + '" alt="No image found""/>';
 			image_count++;
+			return str;
 		});
 		// Do the same with video and audio
 	};
