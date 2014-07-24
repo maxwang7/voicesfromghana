@@ -60,7 +60,10 @@ exports.people = function(req, res) {
 			if(err) {
 				res.send(500);
 			}
-			console.log(posts);
+			for(var m = 0; m < posts.length; m++) {
+				var post = posts[m];
+				post.info.text = utilities.processText(post);
+			}
 			res.render('audience/people/people', { posts : posts });
 		})
 };

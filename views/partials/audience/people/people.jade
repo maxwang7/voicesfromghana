@@ -15,20 +15,8 @@ block contenter
                     - var index = person.media.primary_image
                     img(src=person.media.image[index].urls.people alt='Image of person').voices-audience-people-photo
                     .voices-audience-people-blurb
-                        .voices-audience-people-blurb-name Title
-                        p more wordss, WORDS!
-            //- .voices-audience-people-photo-container-outer
-            //-     .voices-audience-people-photo-container-inner
-            //-         img(src='' alt='Image of person').voices-audience-people-photo
-            //-         .voices-audience-people-blurb
-            //-             .voices-audience-people-blurb-name Title
-            //-             p more wordss, WORDS!
-            //- .voices-audience-people-photo-container-outer
-            //-     .voices-audience-people-photo-container-inner
-            //-         img(src='' alt='Image of person').voices-audience-people-photo
-            //-         .voices-audience-people-blurb
-            //-             .voices-audience-people-blurb-name Title
-            //-             p more wordss, WORDS!
+                        .voices-audience-people-blurb-name= person.info.title
+                        .voices-audience-people-blurb-text!= person.info.text
         script.
             (function() {
                 var $containers = $('.voices-audience-people-photo-container-inner'),
