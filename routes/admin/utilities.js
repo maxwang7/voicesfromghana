@@ -1,5 +1,4 @@
-var fs = require('fs'),
-	request = require('request');
+var fs = require('fs');
 
 exports.process_tags = function(str) {
 	// Need to finish implementation!
