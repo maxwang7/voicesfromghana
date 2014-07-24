@@ -65,7 +65,7 @@ function Uploader(aws) {
 						*/
 
 						if(file_type === 'image') {
-							var url_prefix = 'https://s3-us-west-2.amazonaws.com/voices-from-ghana-test/';
+							var url_prefix = 'https://s3-us-west-2.amazonaws.com/voices-from-ghana/';
 							var data = {
 								type : file_type,
 								media : {
