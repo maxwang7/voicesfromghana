@@ -41,6 +41,7 @@
 			padding: 10px 0 0 10px;
 			font-weight: 600;
 			letter-spacing: -0.1em;
+			font-size: 1.5em;
 
 			height: 3em;
 			overflow: hidden;
@@ -59,34 +60,34 @@
 		.voices-audience-blog-recent-sneakpeak-description {
 			padding: 10px 7px 0 10px;
 			opacity: 0.9;
-			font-size: 0.9em;
+			font-size: 1em;
 			font-family: garamond;
-			letter-spacing: 0.1em;
-			line-height: 1.5em;
+			/*letter-spacing: 0.1em;*/
+			line-height: 1.25em;
 			overflow: scroll;
-			height: 12.45em;
+			height: 9.7em;
 		}
 
 		.voices-audience-blog-recent-sneakpeak-readmore {
 			padding: 10px 0 0 10px;
 			color: #FFBD36;
 		}
-			.voices-audience-blog-recent-sneakpeak-readmore a:link {
+			a:link {
 				color: #FFBD36;
 				text-decoration: none;
 			}
 
-			.voices-audience-blog-recent-sneakpeak-readmore a:visited {
+			a:visited {
 				color: #FFBD36;
 				text-decoration: none;
 			}
 
-			.voices-audience-blog-recent-sneakpeak-readmore a:hover {
+			a:hover {
 				color: #FFBD36;
 				text-decoration: underline;
 			}
 
-			.voices-audience-blog-recent-sneakpeak-readmore a:active {
+			 a:active {
 				color: #FFBD36;
 				text-decoration: none;
 			}
