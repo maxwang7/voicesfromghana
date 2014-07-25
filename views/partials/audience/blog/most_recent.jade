@@ -4,7 +4,8 @@
 		img#voices-audience-blog-recent-image(src=most_recent.media.image[most_recent.media.primary_image].urls.most_recent alt='Image from blog post')
 	.voices-audience-blog-recent-sneakpeak-container
 		.voices-audience-blog-recent-sneakpeak-date= months[most_recent.timestamp.getMonth()] + ' ' + most_recent.timestamp.getDate()
-		.voices-audience-blog-recent-sneakpeak-title= most_recent.info.title
+		.voices-audience-blog-recent-sneakpeak-title
+			a(href='/blog/' + most_recent._id)= most_recent.info.title
 		.voices-audience-blog-recent-sneakpeak-location= most_recent.info.location
 		.voices-audience-blog-recent-sneakpeak-description= most_recent.info.description
 		.voices-audience-blog-recent-sneakpeak-readmore 
