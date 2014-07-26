@@ -16,7 +16,7 @@ exports.processText = function(post) {
 	// from the post object.
 	function insertMedia(text_str, post) {
 		var image_count = 0;
-		return text_str.replace('##image##', function(match) {
+		return text_str.replace(new RegExp('##image##', 'g'), function(match) {
 			var str = '<img src="' + post.media.image[image_count].urls.original + '" alt="No image found""/>';
 			image_count++;
 			return str;
