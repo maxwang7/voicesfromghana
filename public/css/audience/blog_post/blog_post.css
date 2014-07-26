@@ -1,7 +1,7 @@
 /* Prefix: voices-audience-blog-post- */
 
 .voices-audience-blog-post-site-container {
-	padding: 0 75px 75px 75px;
+	padding: 0 75px 50px 75px;
 	padding-top: 75px;
 	background-color: white;
 
@@ -31,3 +31,7 @@
 	img {
 		max-width: 500px;
 	}
+
+.voices-adience-blog-post-footer-placeholder {
+	height: 20px;
+}

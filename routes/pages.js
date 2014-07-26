@@ -7,7 +7,7 @@ exports.index = function(req, res) {
 
 exports.blog = function(req, res) {
 	Post.find({})
-		.sort('-timestamp')
+		.sort('-date')
 		.populate('media.image')
 		.exec(function(err, posts) {
 			if(err) console.log(err);

@@ -15,6 +15,7 @@
 		padding: 75px 25px 50px 40px;
 		width: 655px;
 		display: inline-block;
+		clear: both;
 	}
 
 	.voices-audience-blog-row-1-note {
@@ -23,9 +24,11 @@
 
 		display: inline-block;
 		float: right;
+		clear: both;
 	}
 
 .voices-audience-blog-row-2 {
+	display: inline-block;
 	text-align: left;
 	margin-top: 5px;
 }
@@ -37,6 +40,7 @@
 		float: left;
 
 		width: 655px;
+		clear: both;
 	}
 
 	.voices-audience-blog-row-2-toc {
@@ -45,12 +49,10 @@
 
 		width: 225px;
 		float: right;
+		clear: right;
 	}
 
 .voices-audience-blog-row-3 {
 	margin-top: 5px;
-	height: 200px
+	height: 20px
 }
-	.voices-audience-blog-row-3-footer {
-
-	}

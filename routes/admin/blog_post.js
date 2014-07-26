@@ -77,6 +77,8 @@ exports.POST = function(req, res) {
 		}
 
 		post.info = create_post_info(body);
+		post.date = body.date;
+		// TODO: Remove this, no longer need isProfile
 		post.isProfile = is_profile;
 		// TODO: Clean this up, this is atrocious
 		// How can it be cleaned up though?
