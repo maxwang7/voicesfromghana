@@ -10,11 +10,11 @@
 }
 	.voices-audience-thanks-note-container {
 		float: left;
-		margin: 50px 0 0 -20px;
+		margin: 0 0 0 -20px;
+		height: 315px;
 
 		box-shadow: -3px 2px 6px 2px gray;
 
-		
 	}
 		.voices-audience-thanks-note-image {
 			width: 350px;
