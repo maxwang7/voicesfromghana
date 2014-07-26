@@ -1,12 +1,12 @@
 extends ../site_container
 
 block header
-	link(rel='stylesheet' href='/css/audience/blog_post/blog_post.css')
+    link(rel='stylesheet' href='/css/audience/blog_post/blog_post.css')
 
 block contenter
-	- var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-	.voices-audience-blog-post-top-placeholder
-	.voices-audience-blog-post-content
-		.voices-audience-blog-post-title= post.info.title
-		.voices-audience-blog-post-time-location= months[post.timestamp.getMonth()] + ' ' + post.timestamp.getDate() + ' ' + post.info.location
-		.voices-audience-blog-post-text!= post.info.text
+    .voices-audience-blog-post-site-container
+        - var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        .voices-audience-blog-post-content
+            .voices-audience-blog-post-title= post.info.title
+            .voices-audience-blog-post-time-location= months[post.timestamp.getMonth()] + ' ' + post.timestamp.getDate() + ' ' + post.info.location
+            .voices-audience-blog-post-text!= post.info.text
