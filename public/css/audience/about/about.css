@@ -13,13 +13,15 @@
 		color: #FFBD36;
 		font-family: avenir;
 		font-size: 30px;
-		width: 100%;
+		width: 87%;
 		border-bottom: 3px solid #eeb42b;
 		font-weight: 600;
+		margin: 0 0 0 50px;
+		/*margin: 0 100px 0 0;*/
 	}
 
 	.voices-audience-about-the-issue-text {
-		padding: 10px 75px 75px 350px;
+		padding: 10px 75px 75px 50px;
 	}
 
 .voices-audience-about-footer-placeholder {
