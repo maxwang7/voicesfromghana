@@ -29,7 +29,7 @@ block content
 								td= post.info.description
 								td= post.info.tags
 								td= post.info.location
-								td= post.timestamp
+								td= post.date
 								td
 									form(action='/admin/blog/delete/' + post._id method='post')
 										button.btn.btn-primary(type='submit') Delete

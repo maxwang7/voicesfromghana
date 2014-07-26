@@ -8,5 +8,6 @@ block contenter
         - var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         .voices-audience-blog-post-content
             .voices-audience-blog-post-title= post.info.title
-            .voices-audience-blog-post-time-location= months[post.timestamp.getMonth()] + ' ' + post.timestamp.getDate() + ' ' + post.info.location
+            .voices-audience-blog-post-time-location= months[post.date.getMonth()] + ' ' + post.date.getDate() + ' ' + post.info.location
             .voices-audience-blog-post-text!= post.info.text
+    .voices-adience-blog-post-footer-placeholder

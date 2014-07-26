@@ -4,8 +4,8 @@ each post, index in posts
 		.voices-audience-blog-archive-container
 			.voices-audience-blog-archive-col-1
 				.voices-audience-blog-archive-col-1-date 
-					.voices-audience-blog-archive-col-1-date-row-1= months[post.timestamp.getMonth()]
-					.voices-audience-blog-archive-col-1-date-row-2= post.timestamp.getDate()
+					.voices-audience-blog-archive-col-1-date-row-1= months[post.date.getMonth()]
+					.voices-audience-blog-archive-col-1-date-row-2= post.date.getDate()
 			.voices-audience-blog-archive-col-2
 				.voices-audience-blog-archive-col-2-image-container
 					img#voices-audience-blog-archive-col-2-image(src=post.media.image[post.media.primary_image].urls.archive alt='Companion image')

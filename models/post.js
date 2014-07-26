@@ -26,7 +26,9 @@ var PostSchema = new mongoose.Schema({
  		// TODO: Set a maximum value for the primary_image that's dependent on the length of the image
 	},
 
-	timestamp: {type: Date, default: Date.now()},
+    date: {type: Date, default: Date.now()}, // date is a user chosen date
+
+	timestamp: {type: Date, default: Date.now()}, // timestamp is the date of creation
 
 	num_views: {type: Number, default: 0, min : 0}
 });

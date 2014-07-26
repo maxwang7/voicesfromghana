@@ -9,8 +9,9 @@
 	font-size: 1.25em;
 }
 	.voices-audience-thanks-note-container {
+		display: inline-block;
 		float: left;
-		margin: 0 0 0 -20px;
+		margin: 0 10px 0 -20px;
 		height: 315px;
 
 		box-shadow: -3px 2px 6px 2px gray;
@@ -27,7 +28,9 @@
 		padding: 25px;
 		width: 550px;
 
-		float: right;
+		/*float: right;*/
+		/*clear: right;*/
+		display: inline-block;
 	}
 		.voices-audience-thanks-text-row {
 			margin: 0 0 15px 0;
@@ -60,3 +63,7 @@
 						
 						width: 300px;
 					}
+
+.voices-audience-thanks-footer-placeholder {
+	height: 20px;
+}

@@ -23,5 +23,14 @@ mixin post_form(post_url, placeholders, post)
         .form-group
             label.col-xs-2.control-label This blog post is a profile
             .col-xs-2
+                //- TODO: Remove checkbox
                 input.checkbox(type='checkbox' name='isProfile' checked=(post.isProfile ? 'checked' : ''))
+        .form-group
+            label.col-xs-2.control-label Date
+            .col-xs-4
+                //- TODO: The splitting thing is pretty hacky. Find other options? 
+                //- Check: http://www.w3schools.com/jsref/jsref_obj_date.asp
+                //- And: http://www.w3.org/TR/html-markup/input.datetime-local.html
+                input.form-control(type='datetime-local' name='date' value=post.date.toISOString().split('.')[0])
+            p.help-block Don't worry, I won't actually use the specific time, just the date and month
         +form_field('', '', 'submit', '', '', '')
