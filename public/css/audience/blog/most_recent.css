@@ -39,8 +39,7 @@
 		.voices-audience-blog-recent-sneakpeak-title {
 			color: #FFBD36;
 			padding: 10px 0 0 10px;
-			font-weight: 600;
-			letter-spacing: -0.1em;
+			font-weight: 400;
 			font-size: 1.5em;
 
 			height: 3em;
@@ -50,8 +49,7 @@
 		.voices-audience-blog-recent-sneakpeak-location {
 			color: #FFBD36;
 			padding: 10px 0 0 10px;
-			font-weight: 600;
-			letter-spacing: -0.1em;
+			font-weight: 400;
 
 			height: 2em;
 			overflow: hidden;
@@ -61,9 +59,7 @@
 			padding: 10px 7px 0 10px;
 			opacity: 0.9;
 			font-size: 1em;
-			font-family: garamond;
-			/*letter-spacing: 0.1em;*/
-			line-height: 1.25em;
+			font-family: 'Crimson Text', serif;
 			overflow: scroll;
 			height: 9.7em;
 		}

@@ -59,8 +59,9 @@
 
 			.voices-audience-blog-archive-col-3-title {
 				font-size: 1.25em;
-				font-weight: 600;
+				font-weight: 400;
 				line-height: 1em;
+				margin: 0 0 5px 0;
 			}
 
 			.voices-audience-blog-archive-col-3-location {
@@ -68,8 +69,7 @@
 			}
 
 			.voices-audience-blog-archive-col-3-description {
-				font-family: serif;
-				word-spacing: 0.5em;
+				font-family: 'Crimson Text', serif;
 				height: 155px;
 				overflow: scroll;
 			}
