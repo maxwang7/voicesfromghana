@@ -71,7 +71,7 @@
 			.voices-audience-blog-archive-col-3-description {
 				font-family: 'Crimson Text', serif;
 				height: 155px;
-				overflow: scroll;
+				/*overflow: scroll;*/
 			}
 
 			.voices-audience-blog-archive-col-3-readmore {

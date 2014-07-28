@@ -3,7 +3,10 @@ mixin post_form(post_url, placeholders, post)
         include bootstrap-form-field
         - var post = post ? post : {info: {title: '', description : '', text: '', tags: '', location: ''}, media: {photo: [], audio: [], video: []}};
         +form_field('Title', 'col-xs-6', 'text', post.info.title, placeholders.title, '')
-        +form_field('Description', 'col-xs-10', 'text', post.info.description, placeholders.description, '')
+        .form-group
+            label.col-xs-2.control-label Description
+            div.col-xs-10
+                input.form-control(type='text' name='text' value=post.info.description placeholder=placeholders.description maxlength='150')
         +form_field('Text', 'col-xs-10', 'textarea', post.info.text, placeholders.text, '15')
         .form-group
             label.col-xs-2.control-label Media tags:

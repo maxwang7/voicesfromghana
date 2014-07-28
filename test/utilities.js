@@ -1,4 +1,8 @@
-var gm = require('../routes/utilities/gm');
-var assert = require('assert');
+var gm = require('../routes/utilities/gm'),
+    Post = require('../models/post'),
+    Image = require('../models/image'),
+    assert = require('assert'),
+    mongoose = require('mongoose');
 
-describe('gm', function() {});
+describe('gm', function() {
+});
