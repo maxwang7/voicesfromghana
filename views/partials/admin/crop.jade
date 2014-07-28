@@ -38,30 +38,18 @@ block content
                 img.voices-admin-crop-archive(src=image.urls.archive alt='Archive image')
             else
                 .error Please crop this image for it to be displayed!
-        //- person, if isProfile is checked
-        if post.isProfile
-            .row
-                h3 People
-                if image.urls.people
-                    img.voices-admin-crop-people(src=image.urls.people alt='People image')
-                else
-                    .error Please crop this image for it to be displayed!
         script(src='/js/admin/media/Cropper.js')
         script.
             var $image = $('.voices-admin-crop-original-image'),
                 $help = $('#voices-admin-crop-help'),
                 $most_recent_button = $('#voices-admin-crop-most_recent-cropper'),
                 $archive_button = $('#voices-admin-crop-archive-cropper'),
-                $people_button = $('#voices-admin-crop-archive-people'),
                 post_id = $('#voices-admin-crop-post-id').val(),
                 index = $('#voices-admin-crop-image-index').val(),
-                // TODO: Update ratios -- see gitHub repo
                 most_recent_ratio = 0.7632,
-                archive_ratio = 0.7486,
-                people_ratio = 1;
+                archive_ratio = 0.7486;
             console.log(index);
             var cropper = Cropper($image[0], $help[0], post_id, index);
             cropper.register($most_recent_button[0], most_recent_ratio);
             cropper.register($archive_button[0], archive_ratio);
-            cropper.register($people_button[0], people_ratio);
             cropper.start();

@@ -23,8 +23,6 @@ module.exports = function(app) {
 
 	app.get('/thanks', pageHandlers.thanks);
 
-	app.get('/people', pageHandlers.people);
-
 	// For Christine
 	app.get('/admin/dashboard', adminHandlers.dashboard);
 

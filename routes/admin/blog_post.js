@@ -60,13 +60,13 @@ exports.GET = function(req, res) {
 //// Respond with a 200 if successful (don't redirect).
 exports.POST = function(req, res) {
 	var redirect_path = '/admin/media/';
-	var is_profile = (req.body.isProfile === 'on');
 
 	function count(text, search_str) {
 		return text.split(search_str).length - 1;
 	}
 
 	var text = body.text;
+	console.log('Here', typeof text);
 	var num_images = count(text, '##image##'),
 		num_audios = count(text, '##audio##'),
 		num_videos = count(text, '##video##');
@@ -78,8 +78,6 @@ exports.POST = function(req, res) {
 
 		post.info = create_post_info(body);
 		post.date = body.date;
-		// TODO: Remove this, no longer need isProfile
-		post.isProfile = is_profile;
 		// TODO: Clean this up, this is atrocious
 		// How can it be cleaned up though?
 		if(post.media.image.length !== num_images) {
