@@ -20,7 +20,7 @@ var ImageSchema = new mongoose.Schema({
 
 	caption : { type : String, default : '' },
 
-	timestamp: {type: Date, default: Date.now()}
+	timestamp: {type: Date, default: Date.now() }
 });
 
 module.exports = mongoose.model('Image', ImageSchema);

@@ -60,7 +60,7 @@
 			opacity: 0.9;
 			font-size: 1em;
 			font-family: 'Crimson Text', serif;
-			overflow: scroll;
+			/*overflow: scroll;*/
 			height: 9.7em;
 		}
 

@@ -33,7 +33,20 @@ var PostSchema = new mongoose.Schema({
 	num_views: {type: Number, default: 0, min : 0}
 });
 
-// Returns a boolean, indicating whether the instance can be displayed
+// Validations
+var description_max_length = 150;
+var description_too_long_message = 'Description can be at most 150 characters';
+PostSchema.path('info.description').validate(function(val) {
+    return val.length <= description_max_length;
+}, description_too_long_message);
+
+var primary_image_not_allowed_message = 'The primary image is an index of the image array, and is either too small or too long.';
+PostSchema.path('media.primary_image').validate(function(val) {
+    var image_len = this.media.image.length;
+    return val >= -1 && val < image_len;
+}, primary_image_not_allowed_message);
+
+// TODO: Returns a boolean, indicating whether the instance can be displayed
 // NOT YET COMPLETE
 PostSchema.methods.isDisplayable = function() {
 	return this.media.image.length !== 0 &&
