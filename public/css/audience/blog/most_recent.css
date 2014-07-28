@@ -60,13 +60,13 @@
 			opacity: 0.9;
 			font-size: 1em;
 			font-family: 'Crimson Text', serif;
-			/*overflow: scroll;*/
-			height: 9.7em;
+			height: 154px;
 		}
 
 		.voices-audience-blog-recent-sneakpeak-readmore {
 			padding: 10px 0 0 10px;
 			color: #FFBD36;
+			height: 23px;
 		}
 			a:link {
 				color: #FFBD36;
