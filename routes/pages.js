@@ -25,7 +25,7 @@ exports.blog = function(req, res) {
 				}
 			})
 
-			res.render('audience/blog/blog', {posts: filtered_posts, current_page: 'home'});
+			res.render('audience/blog/blog', {posts: filtered_posts, current_page: 'blog'});
 		});
 };
 
@@ -49,5 +49,5 @@ exports.post = function(req, res) {
 };
 
 exports.thanks = function(req, res) {
-	res.render('audience/thanks/thanks');
+	res.render('audience/thanks/thanks', {current_page: 'thanks'});
 };
