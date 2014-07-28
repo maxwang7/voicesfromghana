@@ -51,19 +51,3 @@ exports.post = function(req, res) {
 exports.thanks = function(req, res) {
 	res.render('audience/thanks/thanks');
 };
-
-exports.people = function(req, res) {
-	Post
-		.find({ isProfile : true })
-		.populate('media.image')
-		.exec(function(err, posts) {
-			if(err) {
-				res.send(500);
-			}
-			for(var m = 0; m < posts.length; m++) {
-				var post = posts[m];
-				post.info.text = utilities.processText(post);
-			}
-			res.render('audience/people/people', { posts : posts });
-		})
-};

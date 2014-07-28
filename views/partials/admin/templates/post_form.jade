@@ -6,7 +6,7 @@ mixin post_form(post_url, placeholders, post)
         .form-group
             label.col-xs-2.control-label Description
             div.col-xs-10
-                input.form-control(type='text' name='text' value=post.info.description placeholder=placeholders.description maxlength='150')
+                input.form-control(type='text' name='description' value=post.info.description placeholder=placeholders.description maxlength='150')
         +form_field('Text', 'col-xs-10', 'textarea', post.info.text, placeholders.text, '15')
         .form-group
             label.col-xs-2.control-label Media tags:
@@ -23,11 +23,6 @@ mixin post_form(post_url, placeholders, post)
         +form_field('Tags', 'col-xs-10', 'text', post.info.tags, placeholders.tags, '')
         +form_field('Location', 'col-xs-10', 'text', post.info.location, placeholders.location, '')
         input(type='hidden' id='voices-image0-url' name='image0' value='')
-        .form-group
-            label.col-xs-2.control-label This blog post is a profile
-            .col-xs-2
-                //- TODO: Remove checkbox
-                input.checkbox(type='checkbox' name='isProfile' checked=(post.isProfile ? 'checked' : ''))
         .form-group
             label.col-xs-2.control-label Date
             .col-xs-4
