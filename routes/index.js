@@ -15,7 +15,7 @@ module.exports = function(app) {
 	// For audience
 	app.get('/', pageHandlers.index);
 
-	app.get('/blog', pageHandlers.blog);
+	app.get('/home', pageHandlers.blog);
 
 	app.get('/blog/:id', pageHandlers.post);
 
