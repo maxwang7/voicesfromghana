@@ -1,6 +1,6 @@
 .voices-audience-blog-toc-container
     .voices-audience-blog-toc-title TABLE OF CONTENTS
     each post, index in posts
-        .voices-audience-blog-toc-entry= months[post.timestamp.getMonth()] + ' ' + post.timestamp.getDate() + ': '
+        .voices-audience-blog-toc-entry= months[post.date.getMonth()] + ' ' + post.date.getDate() + ': '
             a(href='/blog/' + post._id)= post.info.title
     .voices-audience-blog-toc-placeholder
