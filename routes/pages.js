@@ -2,7 +2,7 @@ var Post = require('../models/post.js');
 var utilities = require('./pages/utilities.js');
 
 exports.index = function(req, res) {
-	res.redirect('/blog');
+	res.redirect('/home');
 }
 
 exports.blog = function(req, res) {
@@ -25,7 +25,7 @@ exports.blog = function(req, res) {
 				}
 			})
 
-			res.render('audience/blog/blog', {posts: filtered_posts, current_page: 'blog'});
+			res.render('audience/blog/blog', {posts: filtered_posts, current_page: 'home'});
 		});
 };
 
