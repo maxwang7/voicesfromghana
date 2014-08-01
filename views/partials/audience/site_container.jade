@@ -1,6 +1,7 @@
 extends ../../template
 
 block head
+	//- Gets the title from the current_page variable. Only used on audience side
     - var title = current_page.substring(0,1).toUpperCase() + current_page.substring(1);
     title= 'Voices From Ghana: ' + title
 	link(rel='stylesheet' href='/css/audience/site_container.css')
