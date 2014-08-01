@@ -44,7 +44,7 @@ exports.post = function(req, res) {
 				res.send(500);
 			}
 			post.info.text = utilities.processText(post);
-			res.render('audience/blog_post/blog_post', {post: post});
+			res.render('audience/blog_post/blog_post', { post: post, current_page: post.info.title });
 		});
 };
 
