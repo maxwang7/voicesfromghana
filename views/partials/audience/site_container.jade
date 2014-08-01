@@ -1,16 +1,16 @@
 extends ../../template
 
 block head
-	//- Gets the title from the current_page variable. Only used on audience side
+    //- Gets the title from the current_page variable. Only used on audience side
     - var title = current_page.substring(0,1).toUpperCase() + current_page.substring(1);
     title= 'Voices From Ghana: ' + title
-	link(rel='stylesheet' href='/css/audience/site_container.css')
-	link(rel='stylesheet' href='/css/audience/nav_bar.css')
-	block header
+    link(rel='stylesheet' href='/css/audience/site_container.css')
+    link(rel='stylesheet' href='/css/audience/nav_bar.css')
+    block header
 
 block content
-	.voices-audience-site-container-outside
-		.voices-audience-site-container-background-image-container
-		.voices-audience-site-container-inside
-			include nav_bar
-			block contenter
+    .voices-audience-site-container-outside
+        .voices-audience-site-container-background-image-container
+        .voices-audience-site-container-inside
+            include nav_bar
+            block contenter
