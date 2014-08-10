@@ -27,3 +27,10 @@ body {
 
 	display: inline-block;
 }
+
+/* Connected with return_home.jade */
+.voices-return-home {
+	color: white;
+	background-color: ; 
+	/*Find out the background color*/
+}

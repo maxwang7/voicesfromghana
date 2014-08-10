@@ -1,0 +1,33 @@
+/* Prefix: voices-return-home- */
+
+.voices-return-home-outside-container {
+text-align: center;
+}
+
+.voices-return-home-inside-container {
+    background-color: #d6b26b;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+a.voices-return-home-text:link{
+    color: white;
+    text-decoration: none;
+}
+
+a.voices-return-home-text:visited{
+    color: white;
+    text-decoration: none;
+}
+
+a.voices-return-home-text:hover{
+    color: white;
+    text-decoration: none;
+}
+
+a.voices-return-home-text:active{
+    color: white;
+    text-decoration: none;
+}
