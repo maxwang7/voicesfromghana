@@ -26,8 +26,31 @@
 			font-family: 'Open Sans', sans-serif;
 			font-weight: 400;
 			font-size: 1.5em;
+			padding: 0.5em 0 0.5em 0;
+		}
+
+		.voices-audience-blog-post-share {
+			font-size: 1.5em;
 			padding: 0.25em 0 0.25em 0;
 		}
+			.voices-audience-blog-post-share-facebook {
+				padding: 0 0 0 30px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+				.voices-audience-blog-post-share-facebook a img {
+					width: 65px;
+				}
+
+            .voices-audience-blog-post-share-twitter {
+            	padding: 0 0 0 15px;
+            	display: inline-block;
+            	vertical-align: middle;
+            }
+            	.voices-audience-blog-post-share-twitter a img {
+            		width: 65px;
+            		border-radius: 3px;
+            	}
 
 		.voices-audience-blog-post-text {
 			font-family: 'Crimson Text', serif;

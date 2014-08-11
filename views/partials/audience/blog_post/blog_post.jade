@@ -9,6 +9,19 @@ block contenter
         .voices-audience-blog-post-content
             .voices-audience-blog-post-title= post.info.title
             .voices-audience-blog-post-time-location= months[post.date.getMonth()] + ' ' + post.date.getDate() + ' ' + post.info.location
+            .voices-audience-blog-post-share SHARE WITH:
+                .voices-audience-blog-post-share-facebook
+                    - var app_id = 692973254128571;
+                    - var redirect_uri = 'http://' + 'www.voicesfromghana.com/blog/' + post._id
+                    - var href = 'http://' + 'www.voicesfromghana.com/blog/' + post._id
+                    - var display = "popup"
+                    a(href='https://www.facebook.com/dialog/share?app_id='+app_id+'&redirect_uri='+redirect_uri+"&href="+href+"&display="+display)
+                        img(src='/images/audience/facebook_logo.png' alt='Facebook logo')
+                .voices-audience-blog-post-share-twitter 
+                    - var page_url = "www.voicesfromghana.com/blog/" + post._id;
+                    - var default_text = 'Check out Christine\'s blog post, "' + post.info.title + '"';
+                    a(href="https://twitter.com/share?text=" + default_text)
+                        img(src='/images/audience/twitter-logo.png' alt='Twitter logo')
             .voices-audience-blog-post-text!= post.info.text
             include ../return_home
     .voices-adience-blog-post-footer-placeholder
