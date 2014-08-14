@@ -52,6 +52,16 @@
 		clear: right;
 	}
 
+	.voices-audience-blog-row-2-share {
+		background-color: #F8F8F8;
+		border: 2px solid #D8D8D8;
+		margin: 10px 0 0 0;
+
+		width: 225px;
+		float: right;
+		clear: right;
+	}
+
 .voices-audience-blog-row-3 {
 	margin-top: 5px;
 	height: 20px

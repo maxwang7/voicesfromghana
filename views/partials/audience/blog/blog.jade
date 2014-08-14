@@ -6,6 +6,7 @@ block header
 	link(rel='stylesheet' href='/css/audience/blog/note.css')
 	link(rel='stylesheet' href='/css/audience/blog/archive.css')
 	link(rel='stylesheet' href='/css/audience/blog/toc.css')
+	link(rel='stylesheet' href='/css/audience/blog/share.css')
 
 block contenter
 	- var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -20,5 +21,7 @@ block contenter
 			include archive
 		.voices-audience-blog-row-2-toc
 			include toc
+		.voices-audience-blog-row-2-share
+			include share
 	.voices-row.voices-audience-blog-row-3
 	include ../analytics

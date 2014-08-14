@@ -1,0 +1,45 @@
+/*Prefix: voices-audience-blog-share- */
+
+.voices-audience-blog-share-container {
+    font-size: 1.5em;
+    padding: 15px;
+}
+
+    .voices-audience-blog-share-message {
+        margin: 0 0 10px 0;
+        font-size: 1.25em;
+    }
+
+    .voices-audience-blog-share-facebook {
+        /*padding: 0 0 0 30px;*/
+        display: inline-block;
+        vertical-align: middle;
+    }
+        .voices-audience-blog-share-facebook a img {
+            width: 65px;
+        }
+
+        .voices-audience-blog-share-facebook-name {
+            margin: 20px 0 0 6px;
+            padding: 0 0 10px 0;
+            display: inline-block;
+            float: right;
+        }
+
+
+    .voices-audience-blog-share-twitter {
+        /*padding: 0 0 0 15px;*/
+        display: inline-block;
+        vertical-align: middle;
+    }
+        .voices-audience-blog-share-twitter a img {
+            width: 65px;
+            border-radius: 3px;
+        }
+
+        .voices-audience-blog-share-twitter-name {
+            margin: 20px 0 0 6px;
+            padding: 0 0 10px 0;
+            display: inline-block;
+            float: right;
+        }
