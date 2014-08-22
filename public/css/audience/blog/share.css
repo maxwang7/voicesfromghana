@@ -19,11 +19,13 @@
             width: 65px;
         }
 
-        .voices-audience-blog-share-facebook-name {
+        a span.voices-audience-blog-share-facebook-name {
             margin: 20px 0 0 6px;
             padding: 0 0 10px 0;
             display: inline-block;
             float: right;
+            font-size: 0.9em;
+            color: black;
         }
 
 
@@ -42,4 +44,7 @@
             padding: 0 0 10px 0;
             display: inline-block;
             float: right;
+
+            font-size: 0.9em;
+            color: black;
         }
