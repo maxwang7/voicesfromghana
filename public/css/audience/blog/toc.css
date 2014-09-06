@@ -11,8 +11,15 @@
 		margin-bottom: 10px;
 	}
 
-	.voices-audience-blog-toc-entry {
+	.voices-audience-blog-toc-entry-date {
 		margin-bottom: 10px;
+		width: 65px;
+		vertical-align: top;
+		text-align: left;
+	}
+
+	.voices-audience-blog-toc-entry-title {
+		text-align: left;
 	}
 
 	.voices-audience-blog-toc-placeholder {
