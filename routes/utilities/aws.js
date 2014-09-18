@@ -9,8 +9,8 @@ var path = require('path');
 
 // The authenitication information necessary to interact with AWS
 var auth = {
-	"accessKeyId" : "AKIAJGSNN2L5MQLAT2MA",
-	"secretAccessKey" : "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",
+	"accessKeyId" : "AKIAI2WFBX77PAQOZIRQ",
+	"secretAccessKey" : "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",
 }
 
 function bucket_name(app) {
